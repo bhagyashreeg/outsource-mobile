@@ -22,11 +22,11 @@ export default class RegCompform extends React.Component {
     }
 
     componentDidMount() {
-        
-        fetch('https://nmsserver.herokuapp.com/proxy/api/user/company/master',{
-            method:'GET',
-            headers:{
-                loginToken:this.props.navigation.state.params.JSON_ListView_Clicked_Item
+
+        fetch('https://nmsserver.herokuapp.com/proxy/api/user/company/master', {
+            method: 'GET',
+            headers: {
+                loginToken: this.props.navigation.state.params.JSON_ListView_Clicked_Item
             }
         })
             .then((response) => response.json())
@@ -37,9 +37,9 @@ export default class RegCompform extends React.Component {
                     dataSource: responseJdatason.countryList,
                 })
             })
-        .catch ((error) => {
-            console.log(error);
-        });
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
 
@@ -65,11 +65,11 @@ export default class RegCompform extends React.Component {
             value: 'Goa',
         }];
         /*Demo for display counries API data*/
-        if(this.state.isLoading){
-            return(
+        if (this.state.isLoading) {
+            return (
                 <View style={styles.container}></View>
             )
-        }else{
+        } else {
             console.log(this.state)
             // let country = this.state.dataSource.map((val,key)=>{
             //     return<View key={key}>
@@ -77,103 +77,103 @@ export default class RegCompform extends React.Component {
             //     </View>
             // });
 
-        return (
-            // <View style={styles.Container}>
-            <View style={styles.RegCompform}>
-                <StatusBar backgroundColor="blue" barStyle="light-content" hidden={true} />
-                <ScrollView>
-                    <Text style={styles.header}>
-                        Company Registration
+            return (
+                // <View style={styles.Container}>
+                <View style={styles.RegCompform}>
+                    <StatusBar backgroundColor="blue" barStyle="light-content" hidden={true} />
+                    <ScrollView>
+                        <Text style={styles.header}>
+                            Company Registration
                     </Text>
-                    {/* {country} */}
-                    {/* <div>
+                        {/* {country} */}
+                        {/* <div>
                         <p>{React.version}</p>
                     </div> */}
 
 
-                    {/* <Text>Company name</Text><TextInput style={styles.textinput} placeholder="Your name" underlineColorAndroid={'transparent'} /> */}
-                    <TextField
-                        label='Company name'
-                        keyboardType='email-address'
-                        formatText={this.formatText}
-                        onSubmitEditing={this.onSubmit}
-                        ref={this.fieldRef}
-                    />
-                    {/* <Text >Company Type</Text><TextInput style={styles.textinput} placeholder="Your name" underlineColorAndroid={'transparent'} /> */}
-                    <TextField
-                        label='Company Type'
-                        keyboardType='email-address'
-                        formatText={this.formatText}
-                        onSubmitEditing={this.onSubmit}
-                        ref={this.fieldRef}
-                    />
-                    <TextField
-                        label='Token ID'
-                        keyboardType='email-address'
-                        formatText={this.formatText}
-                        onSubmitEditing={this.onSubmit}
-                        ref={this.fieldRef}
-                        value = {this.props.navigation.state.params.JSON_ListView_Clicked_Item}
-                    />
-                    
-                    {/* <Text >Contact Person</Text><TextInput style={styles.textinput} placeholder="Your name" underlineColorAndroid={'transparent'} /> */}
-                    <TextField
-                        label='Company Person'
-                        keyboardType='email-address'
-                        formatText={this.formatText}
-                        onSubmitEditing={this.onSubmit}
-                        ref={this.fieldRef}
-                    />
+                        {/* <Text>Company name</Text><TextInput style={styles.textinput} placeholder="Your name" underlineColorAndroid={'transparent'} /> */}
+                        <TextField
+                            label='Company name'
+                            keyboardType='email-address'
+                            formatText={this.formatText}
+                            onSubmitEditing={this.onSubmit}
+                            ref={this.fieldRef}
+                        />
+                        {/* <Text >Company Type</Text><TextInput style={styles.textinput} placeholder="Your name" underlineColorAndroid={'transparent'} /> */}
+                        <TextField
+                            label='Company Type'
+                            keyboardType='email-address'
+                            formatText={this.formatText}
+                            onSubmitEditing={this.onSubmit}
+                            ref={this.fieldRef}
+                        />
+                        <TextField
+                            label='Token ID'
+                            keyboardType='email-address'
+                            formatText={this.formatText}
+                            onSubmitEditing={this.onSubmit}
+                            ref={this.fieldRef}
+                            value={this.props.navigation.state.params.JSON_ListView_Clicked_Item}
+                        />
 
-                    <TextField
-                        label='Company Email ID'
-                        keyboardType='email-address'
-                        formatText={this.formatText}
-                        onSubmitEditing={this.onSubmit}
-                        ref={this.fieldRef}
-                    />
-                    {/* <Text>Company Status</Text><TextInput style={styles.textinput} placeholder="Your name" underlineColorAndroid={'transparent'} /> */}
-                    <Dropdown
-                        label='Company Status'
-                        data={States}
-                    />
-                    {/* <Text>Country</Text><TextInput style={styles.textinput} placeholder="Your name" underlineColorAndroid={'transparent'} /> */}
+                        {/* <Text >Contact Person</Text><TextInput style={styles.textinput} placeholder="Your name" underlineColorAndroid={'transparent'} /> */}
+                        <TextField
+                            label='Company Person'
+                            keyboardType='email-address'
+                            formatText={this.formatText}
+                            onSubmitEditing={this.onSubmit}
+                            ref={this.fieldRef}
+                        />
 
-                    {/* <Text>Pin Code</Text><TextInput style={styles.textinput} placeholder="Your name" underlineColorAndroid={'transparent'} /> */}
-                    <TextField
-                        label='Pin Code'
-                        keyboardType='phone-pad'
-                        formatText={this.formatText}
-                        onSubmitEditing={this.onSubmit}
-                        ref={this.fieldRef}
-                    />
-                    {/* <Text>Country</Text><TextInput style={styles.textinput} placeholder="Your name" underlineColorAndroid={'transparent'} /> */}
-                    <Dropdown
-                        label='Country'
-                        data={Country}
-                    />
-                    {/* <Text>State</Text><TextInput style={styles.textinput} placeholder="Your name" underlineColorAndroid={'transparent'} /> */}
-                    <Dropdown
-                        label='State'
-                        data={States}
-                    />
-                    <TextField
-                        label='Phone number'
-                        keyboardType='phone-pad'
-                        formatText={this.formatText}
-                        onSubmitEditing={this.onSubmit}
-                        ref={this.fieldRef}
-                    />
-                    <Button
-                        onPress={this.onPressButton}
-                        title="Submit"
-                        disabled={false}
-                    />
-                </ScrollView>
-            </View>
-            // </View>
-        );
-    }
+                        <TextField
+                            label='Company Email ID'
+                            keyboardType='email-address'
+                            formatText={this.formatText}
+                            onSubmitEditing={this.onSubmit}
+                            ref={this.fieldRef}
+                        />
+                        {/* <Text>Company Status</Text><TextInput style={styles.textinput} placeholder="Your name" underlineColorAndroid={'transparent'} /> */}
+                        <Dropdown
+                            label='Company Status'
+                            data={States}
+                        />
+                        {/* <Text>Country</Text><TextInput style={styles.textinput} placeholder="Your name" underlineColorAndroid={'transparent'} /> */}
+
+                        {/* <Text>Pin Code</Text><TextInput style={styles.textinput} placeholder="Your name" underlineColorAndroid={'transparent'} /> */}
+                        <TextField
+                            label='Pin Code'
+                            keyboardType='phone-pad'
+                            formatText={this.formatText}
+                            onSubmitEditing={this.onSubmit}
+                            ref={this.fieldRef}
+                        />
+                        {/* <Text>Country</Text><TextInput style={styles.textinput} placeholder="Your name" underlineColorAndroid={'transparent'} /> */}
+                        <Dropdown
+                            label='Country'
+                            data={Country}
+                        />
+                        {/* <Text>State</Text><TextInput style={styles.textinput} placeholder="Your name" underlineColorAndroid={'transparent'} /> */}
+                        <Dropdown
+                            label='State'
+                            data={States}
+                        />
+                        <TextField
+                            label='Phone number'
+                            keyboardType='phone-pad'
+                            formatText={this.formatText}
+                            onSubmitEditing={this.onSubmit}
+                            ref={this.fieldRef}
+                        />
+                        <Button
+                            onPress={this.onPressButton}
+                            title="Submit"
+                            disabled={false}
+                        />
+                    </ScrollView>
+                </View>
+                // </View>
+            );
+        }
     }
 }
 const styles = StyleSheet.create({

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   TextInput,
   StyleSheet,
@@ -8,56 +8,46 @@ import {
   Image,
   Dimensions,
   TouchableOpacity,
-  Button,
   StatusBar
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import bgImage from './images/indexlogo.jpg';
+import bgImage from './images/login-background.jpg';
 import logo from './images/nms-logo.png';
 import { KeyboardAvoidingView } from 'react-native';
-
-
-
 
 const { width: WIDTH } = Dimensions.get('window')//returns the current screen dimension
 export default (props) => {
   let { navigation } = props;
-  //alert(navigation);
-  const [userName, setuserName] = useState('');
+  const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
-  const [statePress, setStatePress] = useState(true),
+  const [statePress, setStatePress] = useState(true);
 
-
-
-    //--------------Function() to show password---------------------
-    onPressPasswordShow = () => {
-      if (statePress == false) {
-        setStatePress(true);
-      }
-      else {
-        setStatePress(false);
-      }
+  //--------------Function() to show password---------------------
+  onPressPasswordShow = () => {
+    if (statePress == false) {
+      setStatePress(true);
     }
-  // -------------Function() to fetch and send credintials--------------
+    else {
+      setStatePress(false);
+    }
+  }
+  // -------------Function() to fetch and send credentials--------------
   const _postData = async () => {
-    // const { navigate } = this.props.navigation;
-    let collections = {}
     if (userName.trim() === "") {
       alert("Username required")
     } else if (password.trim() === "") {
       alert("Password required")
     } else {
       try {
-        collections.userName = userName,
-          collections.password = password
-        console.log(collections)
-        // this.setState({ text: 'Clicked' })
         fetch('http://outsource-management.aranyaa-construction.com/api/auth/admin-login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(collections)
+          body: JSON.stringify({
+            userName,
+            password
+          })
         })
           .then(res => res.json())
           .catch(error => console.error('Error :', error))
@@ -65,9 +55,6 @@ export default (props) => {
             console.log('Success:', response);
             if (response.responseStatus) {
               alert("authenticated successfully!!!");
-              // navigate('CompanyRegistration', {
-              //   JSON_ListView_Clicked_Item: response.loginToken
-              // })
             } else {
               alert("authenticated Unsuccessfully!!!");
             }
@@ -77,17 +64,9 @@ export default (props) => {
       }
     }
   }
-  // alert(userName)
-  // alert(password)
-  return (
-    // <View style={styles.container}>
 
+  return (
     <ImageBackground source={bgImage} style={styles.backgroundContainer}>
-      {/* <Text>Login</Text>
-      <Button title="Go to Register" onPress={() => {
-        navigation.navigate("Register")
-      }}>
-      </Button> */}
       {/* ---------------------------logo--------------and --------name------ */}
       <View style={styles.logoContainer}>
         <Image source={logo} style={styles.logo} />
@@ -104,7 +83,7 @@ export default (props) => {
           placeholderTextColor={'rgba(255,255,255,0.7)'}
           underlineColorAndroid='transparent'
           value={userName}
-          onChangeText={userName => setuserName(userName)}
+          onChangeText={userName => setUserName(userName)}
 
         />
       </View>
@@ -140,18 +119,10 @@ export default (props) => {
       <StatusBar hidden={true} />
       {/* --------------------------------Password------------------------------ */}
     </ImageBackground>
-    // </View>
   )
-
-
 }
 
 const styles = StyleSheet.create({
-  // container: {
-  //   flex: 1,
-  //   alignItems: 'center',
-  //   justifyContent: 'center'
-  // },
   backgroundContainer: {
     flex: 1,
     width: null,

@@ -32,7 +32,7 @@ export default class SecondPage extends Component {
         //Setting the header of the screen
         title: 'DashBoard',
         // headerLeft: null,
-        header:null
+        header: null
     };
     componentDidMount() {
         BackHandler.addEventListener('hardwareBackPress', this.funConfirm);

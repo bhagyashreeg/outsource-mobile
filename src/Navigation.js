@@ -12,7 +12,7 @@ export const Navigation = () => {
         <NavigationContainer>
             <Stack.Navigator
                 initialRouteName="Login" screenOptions={{
-                    headerTitle: () => <Text>OUTSOURCE</Text>
+                    headerTitle: () => null
                 }}>
                 <Stack.Screen name="Login" component={Login} />
             </Stack.Navigator>
