@@ -10,11 +10,10 @@ const Stack = createStackNavigator();
 export const Navigation = () => {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Login"
-                screenOptions={{
-                    headerShown: false
-                }}
-            >
+            <Stack.Navigator
+                initialRouteName="Login" screenOptions={{
+                    headerTitle: () => <Text>OUTSOURCE</Text>
+                }}>
                 <Stack.Screen name="Login" component={Login} />
             </Stack.Navigator>
         </NavigationContainer>
