@@ -1,6 +1,6 @@
-import { Navigation } from './src/Navigation';
+import { Providers } from './src/Providers';
 
 
-export default Navigation;
+export default Providers;
 
 

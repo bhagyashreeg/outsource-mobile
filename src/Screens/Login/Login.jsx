@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   TextInput,
   StyleSheet,
@@ -8,17 +8,19 @@ import {
   Image,
   Dimensions,
   TouchableOpacity,
-  StatusBar
+  StatusBar,
+  KeyboardAvoidingView
 } from 'react-native';
+import { AuthContext } from "../../Context/AuthProvider";
+
 import Icon from 'react-native-vector-icons/Ionicons';
 import bgImage from './images/login-background.jpg';
 import logo from './images/nms-logo.png';
-import { KeyboardAvoidingView } from 'react-native';
 
 const { width: WIDTH } = Dimensions.get('window')//returns the current screen dimension
 
 export default (props) => {
-  let { navigation } = props;
+  const { login } = useContext(AuthContext);
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [statePress, setStatePress] = useState(true);
@@ -39,30 +41,7 @@ export default (props) => {
     } else if (password.trim() === "") {
       alert("Password required")
     } else {
-      try {
-        fetch('http://outsource-management.aranyaa-construction.com/api/auth/admin-login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            userName,
-            password
-          })
-        })
-          .then(res => res.json())
-          .catch(error => console.error('Error :', error))
-          .then(response => {
-            console.log('Success:', response);
-            if (response.responseStatus) {
-              alert("authenticated successfully!!!");
-            } else {
-              alert("authenticated Unsuccessfully!!!");
-            }
-          });
-      } catch (e) {
-        console.log(e)
-      }
+      login({ userName, password });
     }
   }
 
@@ -86,7 +65,6 @@ export default (props) => {
             underlineColorAndroid='transparent'
             value={userName}
             onChangeText={userName => setUserName(userName)}
-
           />
         </View>
         {/* --------------------------------password------------------------------ */}

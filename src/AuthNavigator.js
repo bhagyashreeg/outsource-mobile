@@ -4,13 +4,12 @@ import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer, useFocusEffect } from '@react-navigation/native';
 
 import Login from './Screens/Login/Login';
 
 const Stack = createStackNavigator();
 
-export const Navigation = () => {
+export const AuthNavigator = () => {
     let [isReady, setIsReady] = useState(false);
     useEffect(() => {
         async function fetchFont() {
@@ -29,13 +28,11 @@ export const Navigation = () => {
     }
 
     return (
-        <NavigationContainer>
-            <Stack.Navigator
-                initialRouteName="Login" screenOptions={{
-                    headerTitle: () => null
-                }}>
-                <Stack.Screen name="Login" component={Login} />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <Stack.Navigator
+            initialRouteName="Login" screenOptions={{
+                headerTitle: () => null
+            }}>
+            <Stack.Screen name="Login" component={Login} />
+        </Stack.Navigator>
     )
 }
