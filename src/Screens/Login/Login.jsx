@@ -1,23 +1,13 @@
 import React, { useState, useContext } from "react";
 import {
-  TextInput,
   StyleSheet,
-  Text,
-  View,
-  ImageBackground,
-  Image,
-  Dimensions,
+  KeyboardAvoidingView,
+  TextInput,
   TouchableOpacity,
-  StatusBar,
-  KeyboardAvoidingView
+  Image
 } from 'react-native';
+import { View, Text } from 'native-base';
 import { AuthContext } from "../../Context/AuthProvider";
-
-import Icon from 'react-native-vector-icons/Ionicons';
-import bgImage from './images/login-background.jpg';
-import logo from './images/nms-logo.png';
-
-const { width: WIDTH } = Dimensions.get('window')//returns the current screen dimension
 
 export default (props) => {
   const { login } = useContext(AuthContext);
@@ -35,7 +25,7 @@ export default (props) => {
     }
   }
   // -------------Function() to fetch and send credentials--------------
-  const _postData = async () => {
+  const submitLogin = async () => {
     if (userName.trim() === "") {
       alert("Username required")
     } else if (password.trim() === "") {
@@ -46,59 +36,33 @@ export default (props) => {
   }
 
   return (
-    <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-      <ImageBackground source={bgImage} style={styles.backgroundContainer}>
-        {/* ---------------------------logo--------------and --------name------ */}
-        <View style={styles.logoContainer}>
-          <Image source={logo} style={styles.logo} />
-          <Text style={styles.logoText}>KPO</Text>
-        </View>
-        {/* --------------------------------username------------------------------ */}
-        <View style={styles.inputContainer}>
-          <Icon name={'ios-person'} size={28} color={'rgba(255,255,255,0.7)'}
-            style={styles.inputIcon}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder={'Username'}
-            placeholderTextColor={'rgba(255,255,255,0.7)'}
-            underlineColorAndroid='transparent'
-            value={userName}
-            onChangeText={userName => setUserName(userName)}
-          />
-        </View>
-        {/* --------------------------------password------------------------------ */}
-        <View style={styles.inputContainer}>
-          <Icon name={'ios-lock'} size={28} color={'rgba(255,255,255,0.7)'}
-            style={styles.inputIcon}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder={'Password'}
-            secureTextEntry={statePress}
-            placeholderTextColor={'rgba(255,255,255,0.7)'}
-            underlineColorAndroid='transparent'
-            value={password}
-            onChangeText={password1 => setPassword(password1)}
-          />
-
-          <TouchableOpacity style={styles.btnEye}
-            onPress={onPressPasswordShow}>
-            <Icon name={!statePress ? 'ios-eye' : 'ios-eye-off'}
-              size={26} color={'rgba(255,255,255,0.7)'} />
-          </TouchableOpacity>
-
-        </View>
-        {/* --------------------------------button------------------------------ */}
-        <TouchableOpacity style={styles.btnLogin}>
-          <Text
-            style={styles.text}
-            onPress={() => _postData()}
-          >Login</Text>
-        </TouchableOpacity>
-        <StatusBar hidden={true} />
-        {/* --------------------------------Password------------------------------ */}
-      </ImageBackground>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior="padding"
+    >
+      <Image
+        style={{ width: 50, height: 50 }}
+        source={require('./images/nms-logo.png')}
+      />
+      <Text style={styles.logo}>KPO</Text>
+      <View style={styles.inputView} >
+        <TextInput
+          style={styles.inputText}
+          placeholder="Username..."
+          placeholderTextColor="#003f5c"
+          onChangeText={text => setUserName(text)} />
+      </View>
+      <View style={styles.inputView} >
+        <TextInput
+          secureTextEntry
+          style={styles.inputText}
+          placeholder="Password..."
+          placeholderTextColor="#003f5c"
+          onChangeText={text => setPassword(text)} />
+      </View>
+      <TouchableOpacity style={styles.loginBtn} onPress={() => submitLogin()}>
+        <Text style={styles.loginText}>LOGIN</Text>
+      </TouchableOpacity>
     </KeyboardAvoidingView>
   )
 }
@@ -106,66 +70,45 @@ export default (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#0487D9',
     alignItems: 'center',
-    justifyContent: 'center'
-  },
-  backgroundContainer: {
-    flex: 1,
-    width: null,
-    height: null,
     justifyContent: 'center',
-    alignItems: 'center',
+  },
+  keyboard: {
+    flex: 1
   },
   logo: {
-    width: 120,
-    height: 120,
+    fontWeight: "bold",
+    fontSize: 50,
+    color: "#5ABF86",
+    marginBottom: 40
   },
-  logoContainer: {
-    alignItems: 'center',
-    marginBottom: 50
+  inputView: {
+    width: "80%",
+    backgroundColor: "#F2F2F2",
+    borderRadius: 25,
+    height: 50,
+    marginBottom: 20,
+    justifyContent: "center",
+    padding: 20
   },
-  logoText: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: '500',
-    marginTop: 10,
-    opacity: 0.5
+  inputText: {
+    height: 50,
+    color: "black"
   },
-  input: {
-    width: WIDTH - 55,
-    height: 45,
-    borderRadius: 45,
-    fontSize: 16,
-    paddingLeft: 45,
-    backgroundColor: 'rgba(0,0,0,0.35)',
-    color: 'rgba(255,255,255,0.7)',
-    marginHorizontal: 25
+  loginText: {
+    color: "white",
+    fontWeight: "700"
   },
-  inputIcon: {
-    position: 'absolute',
-    top: 8,
-    left: 37
-  },
-  inputContainer: {
-    marginTop: 10
-  },
-  btnEye: {
-    position: "absolute",
-    top: 8,
-    right: 37
-  },
-  btnLogin: {
-    width: WIDTH - 55,
-    height: 45,
-    borderRadius: 45,
-    backgroundColor: '#432577',
-    justifyContent: 'center',
-    marginTop: 20
-  },
-  text: {
-    color: 'rgba(255,255,255,0.7)',
-    fontSize: 16,
-    textAlign: 'center'
+  loginBtn: {
+    width: "80%",
+    backgroundColor: "#012840",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 40,
+    marginBottom: 10
   }
 });
 

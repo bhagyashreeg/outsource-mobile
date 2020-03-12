@@ -4,7 +4,7 @@ import { AuthContext } from "./Context/AuthProvider";
 import { AppNavigator } from "./AppNavigator";
 import { AuthNavigator } from "./AuthNavigator";
 
-export const Routes = ({ }) => {
+export const Routes = () => {
     const { user } = useContext(AuthContext);
 
     console.log(user, "user");
