@@ -9,12 +9,17 @@ import {
     Dimensions,
     TouchableOpacity,
     Button,
-    Statusbar
+    StatusBar
 } from 'react-native';
 import bgImage from './images/indexlogo.jpg'
 import logo from './images/nms-logo.png'
 import Icon from 'react-native-vector-icons/Ionicons'
-import { TextField, FilledTextField, OutlinedTextField } from 'react-native-material-textfield';
+import { 
+    TextField, 
+    FilledTextField, 
+    OutlinedTextField 
+} from 'react-native-material-textfield';
+
 
 const { width: WIDTH } = Dimensions.get('window')//returns the current screen dimension
 export default class Loginsignup extends Component {
@@ -98,7 +103,7 @@ export default class Loginsignup extends Component {
 
                     >Login{this.state.text}</Text>
                 </TouchableOpacity>
-                <Statusbar hidden = {true}/>
+                <StatusBar hidden = {true}/>
             </ImageBackground>
         );
     }

@@ -31,7 +31,8 @@ export default class SecondPage extends Component {
     static navigationOptions = {
         //Setting the header of the screen
         title: 'DashBoard',
-        headerLeft: null,
+        // headerLeft: null,
+        header:null
     };
     componentDidMount() {
         BackHandler.addEventListener('hardwareBackPress', this.funConfirm);
