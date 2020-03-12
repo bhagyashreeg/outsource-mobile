@@ -14,10 +14,10 @@ import {
 import bgImage from './images/indexlogo.jpg'
 import logo from './images/nms-logo.png'
 import Icon from 'react-native-vector-icons/Ionicons'
-import { TextField, FilledTextField, OutlinedTextField } from 'react-native-material-textfield';
+
 
 const { width: WIDTH } = Dimensions.get('window')//returns the current screen dimension
-export default class Loginsignup extends Component {
+export default class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -43,7 +43,6 @@ export default class Loginsignup extends Component {
     };
 
     render() {
-        const { navigate } = this.props.navigation;
         return (
             <ImageBackground source={bgImage} style={styles.backgroundContainer}>
                 <View style={styles.logoContainer}>
@@ -77,7 +76,6 @@ export default class Loginsignup extends Component {
                         secureTextEntry={this.state.showPassword}
                         placeholderTextColor={'rgba(255,255,255,0.7)'}
                         underlineColorAndroid='transparent'
-
                         value={this.state.password}
                         onChangeText={password => this.setState({ password })}
                     />
@@ -95,7 +93,6 @@ export default class Loginsignup extends Component {
                         onPress={() =>
                             this._postData()
                         }
-
                     >Login{this.state.text}</Text>
                 </TouchableOpacity>
                 <Statusbar hidden = {true}/>
