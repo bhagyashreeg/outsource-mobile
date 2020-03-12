@@ -16,6 +16,7 @@ import logo from './images/nms-logo.png';
 import { KeyboardAvoidingView } from 'react-native';
 
 const { width: WIDTH } = Dimensions.get('window')//returns the current screen dimension
+
 export default (props) => {
   let { navigation } = props;
   const [userName, setUserName] = useState('');
@@ -66,63 +67,70 @@ export default (props) => {
   }
 
   return (
-    <ImageBackground source={bgImage} style={styles.backgroundContainer}>
-      {/* ---------------------------logo--------------and --------name------ */}
-      <View style={styles.logoContainer}>
-        <Image source={logo} style={styles.logo} />
-        <Text style={styles.logoText}>KPO</Text>
-      </View>
-      {/* --------------------------------username------------------------------ */}
-      <View style={styles.inputContainer}>
-        <Icon name={'ios-person'} size={28} color={'rgba(255,255,255,0.7)'}
-          style={styles.inputIcon}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder={'Username'}
-          placeholderTextColor={'rgba(255,255,255,0.7)'}
-          underlineColorAndroid='transparent'
-          value={userName}
-          onChangeText={userName => setUserName(userName)}
+    <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+      <ImageBackground source={bgImage} style={styles.backgroundContainer}>
+        {/* ---------------------------logo--------------and --------name------ */}
+        <View style={styles.logoContainer}>
+          <Image source={logo} style={styles.logo} />
+          <Text style={styles.logoText}>KPO</Text>
+        </View>
+        {/* --------------------------------username------------------------------ */}
+        <View style={styles.inputContainer}>
+          <Icon name={'ios-person'} size={28} color={'rgba(255,255,255,0.7)'}
+            style={styles.inputIcon}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder={'Username'}
+            placeholderTextColor={'rgba(255,255,255,0.7)'}
+            underlineColorAndroid='transparent'
+            value={userName}
+            onChangeText={userName => setUserName(userName)}
 
-        />
-      </View>
-      {/* --------------------------------password------------------------------ */}
-      <View style={styles.inputContainer}>
-        <Icon name={'ios-lock'} size={28} color={'rgba(255,255,255,0.7)'}
-          style={styles.inputIcon}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder={'Password'}
-          secureTextEntry={statePress}
-          placeholderTextColor={'rgba(255,255,255,0.7)'}
-          underlineColorAndroid='transparent'
-          value={password}
-          onChangeText={password1 => setPassword(password1)}
-        />
+          />
+        </View>
+        {/* --------------------------------password------------------------------ */}
+        <View style={styles.inputContainer}>
+          <Icon name={'ios-lock'} size={28} color={'rgba(255,255,255,0.7)'}
+            style={styles.inputIcon}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder={'Password'}
+            secureTextEntry={statePress}
+            placeholderTextColor={'rgba(255,255,255,0.7)'}
+            underlineColorAndroid='transparent'
+            value={password}
+            onChangeText={password1 => setPassword(password1)}
+          />
 
-        <TouchableOpacity style={styles.btnEye}
-          onPress={onPressPasswordShow}>
-          <Icon name={!statePress ? 'ios-eye' : 'ios-eye-off'}
-            size={26} color={'rgba(255,255,255,0.7)'} />
+          <TouchableOpacity style={styles.btnEye}
+            onPress={onPressPasswordShow}>
+            <Icon name={!statePress ? 'ios-eye' : 'ios-eye-off'}
+              size={26} color={'rgba(255,255,255,0.7)'} />
+          </TouchableOpacity>
+
+        </View>
+        {/* --------------------------------button------------------------------ */}
+        <TouchableOpacity style={styles.btnLogin}>
+          <Text
+            style={styles.text}
+            onPress={() => _postData()}
+          >Login</Text>
         </TouchableOpacity>
-
-      </View>
-      {/* --------------------------------button------------------------------ */}
-      <TouchableOpacity style={styles.btnLogin}>
-        <Text
-          style={styles.text}
-          onPress={() => _postData()}
-        >Login</Text>
-      </TouchableOpacity>
-      <StatusBar hidden={true} />
-      {/* --------------------------------Password------------------------------ */}
-    </ImageBackground>
+        <StatusBar hidden={true} />
+        {/* --------------------------------Password------------------------------ */}
+      </ImageBackground>
+    </KeyboardAvoidingView>
   )
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   backgroundContainer: {
     flex: 1,
     width: null,
