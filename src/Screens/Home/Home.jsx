@@ -48,6 +48,10 @@ export default () => {
     }
     return (
         <ScrollView  >
+            {/* --------------------------I have attached the code which includes some code of a class component ------------------------ */}
+            {/* --------------------------I am fully clonfused on how to convert into a class component ------------------------ */}
+            {/* --------------------------reffered to the internet but not able to understand it  ------------------------ */}
+            {/* --------------------------I also want data to get display into a <text> or otherthing PLEASE HELP   ------------------------ */}
             <Center>
                 <Text>Hello</Text>
                 <Button onPress={() => logout()} title="Logout"></Button>
@@ -83,7 +87,7 @@ export default () => {
                     </Text>
                 }
             />
-
+            
         </ScrollView>
 
     )
