@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Text, ScrollView, Button } from 'react-native';
+import { Drawer } from 'native-base';
 import { Center } from '../../Components/Center';
 import { AuthContext } from "../../Context/AuthProvider";
 const baseURL = 'https://nmsserver.herokuapp.com/proxy/api/user/company/master';
@@ -27,12 +28,14 @@ export default () => {
             })
     }, []);
 
-    if(loading){
-        return <Center>LOADING</Center>
+    if (loading) {
+        return (<Center>
+            <Text>LOADING</Text>
+        </Center>)
     }
 
     return (
-        <ScrollView  >
+        <ScrollView>
             <Center>
                 <Text>Hello</Text>
                 <Button onPress={() => logout()} title="Logout"></Button>

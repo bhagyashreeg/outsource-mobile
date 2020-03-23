@@ -1,19 +1,19 @@
 import React from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import Home from './Screens/Home/Home';
 
-const Tabs = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
 export const AppNavigator = ({ }) => {
     return (
-        <Tabs.Navigator
+        <Drawer.Navigator initialRouteName="Home"
             tabBarOptions={{
                 activeTintColor: "tomato",
                 inactiveTintColor: "gray"
             }}
         >
-            <Tabs.Screen name="Home" component={Home} />
-        </Tabs.Navigator>
+            <Drawer.Screen name="Home" component={Home} />
+        </Drawer.Navigator>
     );
 };
