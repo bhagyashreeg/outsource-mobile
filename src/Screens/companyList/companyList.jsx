@@ -9,7 +9,7 @@ export default () => {
     const { logout } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
-
+    
     useEffect(() => {
         setLoading(true);
         fetch(baseURL, {
@@ -29,7 +29,6 @@ export default () => {
                 setLoading(false);
             })
     }, []);
-
     if (loading) {
         return (<Center>
             <Text>LOADING</Text>
@@ -38,21 +37,13 @@ export default () => {
     function getVal() {
         return (<Text>Display data!</Text>)
     }
-
-
     return (
         <ScrollView >
-
             <Center>
                 <Text style={styles.bigBlue}>Form to display company list</Text>
-
             </Center>
             <Text>Displaying Companies</Text>
-
-
-
         </ScrollView>
-
     )
 }
 const styles = StyleSheet.create({
