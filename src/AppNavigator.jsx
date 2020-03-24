@@ -37,10 +37,10 @@ export const AppNavigator = ({ }) => {
         <Drawer.Navigator
             initialRouteName="Home"
             drawerStyle={{
-                backgroundColor: '#407344'
+                backgroundColor: '#244030'
             }}
             drawerContentOptions={{
-                activeTintColor: '#e91e63',
+                activeTintColor: '#407344',
                 labelStyle: {
                     color: '#D9D273',
                     fontWeight: 'bold'
