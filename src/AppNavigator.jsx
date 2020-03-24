@@ -5,7 +5,7 @@ import {
     DrawerItemList,
     DrawerItem,
 } from '@react-navigation/drawer';
-import { StyleSheet } from 'react-native';
+import { Image } from 'react-native';
 
 import Home from './Screens/Home/Home';
 import Settings from './Screens/Settings/Settings';
@@ -19,6 +19,16 @@ function CustomDrawerContent(props) {
     const { logout } = useContext(AuthContext);
     return (
         <DrawerContentScrollView {...props}>
+            <DrawerItem label={() => {
+                return <Image
+                    style={{ width: 100, height: 50 }}
+                    source={require('./Static/images/nms-logo.png')}
+                />
+            }} style={{
+                display: 'flex',
+                alignItems: "center",
+                justifyContent: 'center'
+            }} />
             <DrawerItemList {...props} />
             <DrawerItem
                 label="Logout"
