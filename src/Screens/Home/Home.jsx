@@ -1,13 +1,12 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, ScrollView, Button, StyleSheet } from 'react-native';
 import { Drawer, Container } from 'native-base';
 import { Center } from '../../Components/Center';
-import { AuthContext } from "../../Context/AuthProvider";
 const baseURL = 'https://nmsserver.herokuapp.com/proxy/api/user/company/master';
 
 export default () => {
-    const { logout } = useContext(AuthContext);
-    const [loading, setLoading] = useState(false);
+    
+    const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -20,9 +19,9 @@ export default () => {
             method: 'POST'
         })
             .then(response => response.json())
-            .then(data => setData(data))
             .then((data) => {
                 setLoading(false);
+                setData(data);
                 console.log(data);
             })
             .catch(() => {
@@ -35,20 +34,11 @@ export default () => {
             <Text>LOADING</Text>
         </Center>)
     }
-    function getVal() {
-        return (<Text>Display data!</Text>)
-    }
-
 
     return (
         <ScrollView style={styles.Container}>
             <Center>
                 <Text>Hello</Text>
-                <Button onPress={() => logout()} title="Logout"></Button>
-            </Center>
-            <Center>
-                <Text>Hello</Text>
-                <Text onPress={() => getVal()}>pppp</Text>
             </Center>
             <Text>Display data!</Text>
             {/* <Text>The country code is!            {data.countryList[0].countryCode}</Text>
