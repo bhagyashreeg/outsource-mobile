@@ -24,8 +24,8 @@ function CustomDrawerContent(props) {
                 label="Logout"
                 onPress={() => logout()}
                 labelStyle={{
-                    color:'blue',
-                    fontWeight:'bold'
+                    color: '#D9D273',
+                    fontWeight: 'bold'
                 }}
             />
         </DrawerContentScrollView>
@@ -34,10 +34,17 @@ function CustomDrawerContent(props) {
 
 export const AppNavigator = ({ }) => {
     return (
-        <Drawer.Navigator initialRouteName="Home"
-            tabBarOptions={{
-                activeTintColor: "tomato",
-                inactiveTintColor: "gray"
+        <Drawer.Navigator
+            initialRouteName="Home"
+            drawerStyle={{
+                backgroundColor: '#407344'
+            }}
+            drawerContentOptions={{
+                activeTintColor: '#e91e63',
+                labelStyle: {
+                    color: '#D9D273',
+                    fontWeight: 'bold'
+                }
             }}
             drawerContent={props => <CustomDrawerContent {...props} />}
         >
