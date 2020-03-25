@@ -41,14 +41,14 @@ export default () => {
                 <Text>Hello</Text>
             </Center>
             <Text>Display data!</Text>
-            {/* <Text>The country code is!            {data.countryList[0].countryCode}</Text>
+            <Text>The country code is!            {data.countryList[0].countryCode}</Text>
             <Text>The country ID is!              {data.countryList[0].countryId}</Text>
             <Text>The country name is!            {data.countryList[0].countryName}</Text>
             <Text>The company status ID is!       {data.companyStatusList[0].companyStatusId}</Text>
             <Text>The company status name is 1!   {data.companyStatusList[0].companyStatusName}</Text>
             <Text>The company status name is 2!   {data.companyStatusList[1].companyStatusName}</Text>
             <Text>The company status name is 3!   {data.companyStatusList[2].companyStatusName}</Text>
-            <Text>The company status name is 4!   {data.companyStatusList[3].companyStatusName}</Text> */}
+            <Text>The company status name is 4!   {data.companyStatusList[3].companyStatusName}</Text>
 
             {/* <Text>Display data!{data.companyStatusList[0]}</Text> */}
             {/* <FlatList
