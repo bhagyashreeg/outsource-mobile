@@ -42,8 +42,9 @@ export default () => {
             <Center>
                 <Text>Hello</Text>
             </Center>
-            <Text>Display data!</Text>
-            <Text>The country code is!            {data.countryList[0].countryCode}</Text>
+             <Text>Display data!</Text>
+            {/* <Text>The country code is!---{data.data.countryList[0].countryId    }---</Text>  */}
+            {/* <Text>The country code is!            {data.countryList[0].countryCode}</Text>
             <Text>The country ID is!              {data.countryList[0].countryId}</Text>
             <Text>The country name is!            {data.countryList[0].countryName}</Text>
             <Text>The company status ID is!       {data.companyStatusList[0].companyStatusId}</Text>
