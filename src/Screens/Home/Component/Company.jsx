@@ -4,7 +4,7 @@ import { Text, View, Button, StyleSheet } from 'react-native';
 
 export default (props) => {
     let { countryList, companyStatusList } = props.company;
-    console.log("prps", props);
+    // console.log("prps", props);
     return (
         <View>
             <Text>Display data!</Text>

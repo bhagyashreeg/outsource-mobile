@@ -1,20 +1,41 @@
 import React, { useState, useEffect } from 'react';
-import { Text, ScrollView, Button, StyleSheet } from 'react-native';
+import { Text, ScrollView, Button, StyleSheet, AsyncStorage } from 'react-native';
 import { Center } from '../../Components/Center';
 import Company from './Component/Company';
-const baseURL = 'https://nmsserver.herokuapp.com/proxy/api/user/company/master';
+// import { AuthContext } from "../../Context/AuthProvider";
 
+const baseURL = 'https://nmsserver.herokuapp.com/proxy/api/user/company/master';
+let loginToken;
+let ppp = "hai";
 export default () => {
 
     const [loading, setLoading] = useState(true);
     const [companyData, setCompanyData] = useState({});
+    const [loginTokenID, setloginTokenID] = useState({});
+    
 
     useEffect(() => {
         setLoading(true);
+
+        // let loginToken;
+        (async () => {
+            let loginToken = await AsyncStorage.getItem("user");
+            if (loginToken !== null) {
+                // We have data!!
+                alert("LoginToken...?"+loginToken)
+                console.log("hence dispying", JSON.parse(loginToken))
+                await setloginTokenID(JSON.parse(loginToken));
+            }
+        })();
+        
+        // console.log("hence dispying+++"+ loginTokenID.loginToken)
+        alert("hhh")
         fetch(baseURL, {
             headers: {
                 'Content-Type': 'application/json; charset=utf-8',
-                'token': '57Cz0gQ7tnq9jMTIW4WxlMPp4dxfA44ONRQTRo9G4Ok='
+                // 'token': '57Cz0gQ7tnq9jMTIW4WxlMPp4dxfA44ONRQTRo9G4Ok='
+                // 'token': 'GAnpMklBJmRu3bkltjYygPB/DsgpzZae+VnpfwBBQN0='
+                'token':loginTokenID.loginToken
             },
             method: 'POST'
         })
@@ -24,7 +45,7 @@ export default () => {
                 await setCompanyData(data);
                 console.log(data.companyStatusList);
             })
-            
+
             .catch(() => {
                 setLoading(false);
             })
@@ -33,7 +54,7 @@ export default () => {
 
     if (loading) {
         return (<Center>
-            <Text>LOADING</Text>
+            <Text>LOADING...</Text>
         </Center>)
     }
 
@@ -41,7 +62,11 @@ export default () => {
         return (
             <ScrollView style={styles.Container}>
                 <Center>
-                    <Text>Hello</Text>
+                    <Text >
+                        {/* <Text onPress={onTokenValue}> */}
+                        Home
+                        {loginTokenID.loginToken}
+                    </Text>
                 </Center>
 
                 <Company company={companyData} />
