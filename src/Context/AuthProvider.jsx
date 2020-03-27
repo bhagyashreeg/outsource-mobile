@@ -34,8 +34,6 @@ export const AuthProvider = ({ children }) => {
                         .then((response) => {
                             setUser(response);
                             AsyncStorage.setItem("user", JSON.stringify(response));
-                            // AsyncStorage.setItem("user",response);
-                            // alert("LoginToken    "+response.loginToken)
                         }).catch((err) => {
                             setUser(null);
                             AsyncStorage.removeItem("user");
