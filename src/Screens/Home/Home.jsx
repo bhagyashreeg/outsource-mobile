@@ -2,70 +2,47 @@ import React, { useState, useEffect } from 'react';
 import { Text, ScrollView, Button, StyleSheet, AsyncStorage } from 'react-native';
 import { Center } from '../../Components/Center';
 import Company from './Component/Company';
-// import { AuthContext } from "../../Context/AuthProvider";
 
 const baseURL = 'https://nmsserver.herokuapp.com/proxy/api/user/company/master';
-let loginToken;
-let ppp = "hai";
+
 export default () => {
 
     const [loading, setLoading] = useState(true);
-    const [companyData, setCompanyData] = useState({});
-    const [loginTokenID, setloginTokenID] = useState({});
-    
+    const [companyData, setCompanyData] = useState(null);
 
     useEffect(() => {
-        setLoading(true);
-
-        // let loginToken;
-        (async () => {
-            let loginToken = await AsyncStorage.getItem("user");
-            if (loginToken !== null) {
-                // We have data!!
-                alert("LoginToken...?"+loginToken)
-                console.log("hence dispying", JSON.parse(loginToken))
-                await setloginTokenID(JSON.parse(loginToken));
-            }
-        })();
-        alert("LoginToken...chking"+loginTokenID.loginToken)
-        // console.log("hence dispying+++"+ loginTokenID.loginToken)
-        alert("hhh")
-        fetch(baseURL, {
-            headers: {
-                'Content-Type': 'application/json; charset=utf-8',
-                // 'token': '57Cz0gQ7tnq9jMTIW4WxlMPp4dxfA44ONRQTRo9G4Ok='
-                // 'token': 'GAnpMklBJmRu3bkltjYygPB/DsgpzZae+VnpfwBBQN0='
-                'token':loginTokenID.loginToken
-            },
-            method: 'POST'
-        })
-            .then(response => response.json())
-            .then(async (data) => {
-                await setLoading(false);
-                await setCompanyData(data);
-                console.log(data.companyStatusList);
+        async function fetchData() {
+            setLoading(true);
+            let loginTokenString = await AsyncStorage.getItem("user");
+            let loginData = JSON.parse(loginTokenString);
+            await fetch(baseURL, {
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'token': loginData.loginToken
+                },
+                method: 'POST'
             })
-
-            .catch(() => {
-                setLoading(false);
-            })
-
+                .then(response => response.json())
+                .then(async (data) => {
+                    await setLoading(false);
+                    await setCompanyData(data);
+                }).catch(() => {
+                    setLoading(false);
+                });
+        }
+        fetchData();
     }, []);
 
-    if (loading) {
+    if (loading || companyData == null) {
         return (<Center>
             <Text>LOADING...</Text>
         </Center>)
-    }
-
-    if (companyData.countryList !== undefined) {
+    } else {
         return (
             <ScrollView style={styles.Container}>
                 <Center>
-                    <Text >
-                        {/* <Text onPress={onTokenValue}> */}
+                    <Text>
                         Home
-                        {loginTokenID.loginToken}
                     </Text>
                 </Center>
 
@@ -88,10 +65,6 @@ export default () => {
             </ScrollView>
 
         )
-    } else {
-        return (<Center>
-            <Text>LOADING</Text>
-        </Center>)
     }
 }
 
