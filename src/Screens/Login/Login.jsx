@@ -42,7 +42,7 @@ export default (props) => {
     >
       <Image
         style={{ width: 50, height: 50 }}
-        source={require('./images/nms-logo.png')}
+        source={require('../../Static/images/nms-logo.png')}
       />
       <Text style={styles.logo}>KPO</Text>
       <View style={styles.inputView} >
