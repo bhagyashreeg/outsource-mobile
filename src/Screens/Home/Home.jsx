@@ -27,7 +27,7 @@ export default () => {
                 await setloginTokenID(JSON.parse(loginToken));
             }
         })();
-        
+        alert("LoginToken...chking"+loginTokenID.loginToken)
         // console.log("hence dispying+++"+ loginTokenID.loginToken)
         alert("hhh")
         fetch(baseURL, {
