@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
                     fetchAsync(data)
                         .then((response) => {
                             setUser(response);
-                            AsyncStorage.setItem("user", response);
+                            AsyncStorage.setItem("user", JSON.stringify(response));
                         }).catch((err) => {
                             setUser(null);
                             AsyncStorage.removeItem("user");

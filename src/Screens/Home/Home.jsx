@@ -1,60 +1,54 @@
 import React, { useState, useEffect } from 'react';
-import { Text, ScrollView, Button, StyleSheet} from 'react-native';
-import { Drawer, Container, Icon,Right } from 'native-base';
+import { Text, ScrollView, Button, StyleSheet, AsyncStorage } from 'react-native';
 import { Center } from '../../Components/Center';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import Company from './Component/Company';
+
 const baseURL = 'https://nmsserver.herokuapp.com/proxy/api/user/company/master';
 
 export default () => {
-    
+
     const [loading, setLoading] = useState(true);
-    const [data, setData] = useState([]);
+    const [companyData, setCompanyData] = useState(null);
 
     useEffect(() => {
-        setLoading(true);
-        fetch(baseURL, {
-            headers: {
-                'Content-Type': 'application/json; charset=utf-8',
-                'token': '57Cz0gQ7tnq9jMTIW4WxlMPp4dxfA44ONRQTRo9G4Ok='
-            },
-            method: 'POST'
-        })
-            .then(response => response.json())
-            .then((data) => {
-                setLoading(false);
-                setData(data);
-                console.log(data);
+        async function fetchData() {
+            setLoading(true);
+            let loginTokenString = await AsyncStorage.getItem("user");
+            let loginData = JSON.parse(loginTokenString);
+            await fetch(baseURL, {
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'token': loginData.loginToken
+                },
+                method: 'POST'
             })
-            .catch(() => {
-                setLoading(false);
-            })
+                .then(response => response.json())
+                .then(async (data) => {
+                    await setLoading(false);
+                    await setCompanyData(data);
+                }).catch(() => {
+                    setLoading(false);
+                });
+        }
+        fetchData();
     }, []);
 
-    if (loading) {
+    if (loading || companyData == null) {
         return (<Center>
-            <Text>LOADING</Text>
+            <Text>LOADING...</Text>
         </Center>)
-    }
+    } else {
+        return (
+            <ScrollView style={styles.Container}>
+                <Center>
+                    <Text>
+                        Home
+                    </Text>
+                </Center>
 
-    return (
-        <ScrollView style={styles.Container}>
-             <Icon name="ios-menu" style={styles.icon} />
-                    
-            <Center>
-                <Text>Hello</Text>
-            </Center>
-            <Text>Display data!</Text>
-            {/* <Text>The country code is!            {data.countryList[0].countryCode}</Text>
-            <Text>The country ID is!              {data.countryList[0].countryId}</Text>
-            <Text>The country name is!            {data.countryList[0].countryName}</Text>
-            <Text>The company status ID is!       {data.companyStatusList[0].companyStatusId}</Text>
-            <Text>The company status name is 1!   {data.companyStatusList[0].companyStatusName}</Text>
-            <Text>The company status name is 2!   {data.companyStatusList[1].companyStatusName}</Text>
-            <Text>The company status name is 3!   {data.companyStatusList[2].companyStatusName}</Text>
-            <Text>The company status name is 4!   {data.companyStatusList[3].companyStatusName}</Text> */}
-
-            {/* <Text>Display data!{data.companyStatusList[0]}</Text> */}
-            {/* <FlatList
+                <Company company={companyData} />
+                {/* <Text>Display data!{data.companyStatusList[0]}</Text> */}
+                {/* <FlatList
                 data={data}
                 keyExtractor={(x, i) => i}
                 renderItem={({ item }) =>
@@ -63,15 +57,15 @@ export default () => {
                     </Text>
                 }
             /> */}
-            {/* <FlatList
+                {/* <FlatList
                 data={data}
                 renderItem={({ item }) => <Text>{item}</Text>}
                 keyExtractor={data.indexOf(companyStatusList)}
             /> */}
-            
-        </ScrollView>
+            </ScrollView>
 
-    )
+        )
+    }
 }
 
 const styles = StyleSheet.create({
@@ -81,10 +75,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         margin: 20,
     },
-    Container:{
-        margin:30
-    },
-    icon:{
-        textAlign:'right'
+    Container: {
+        margin: 30
     }
 });
