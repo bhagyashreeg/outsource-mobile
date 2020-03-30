@@ -40,30 +40,13 @@ export default () => {
         </Center>)
     } else {
         return (
-            <ScrollView style={styles.Container}>
-                <Icon name="ios-menu" style={styles.icon}/>
+            <ScrollView>
                 <Center>
                     <Text>
                         Home
                     </Text>
                 </Center>
-
                 <Company company={companyData} />
-                {/* <Text>Display data!{data.companyStatusList[0]}</Text> */}
-                {/* <FlatList
-                data={data}
-                keyExtractor={(x, i) => i}
-                renderItem={({ item }) =>
-                    <Text>
-                        {`${item.companyStatusList.companyStatusName}`}
-                    </Text>
-                }
-            /> */}
-                {/* <FlatList
-                data={data}
-                renderItem={({ item }) => <Text>{item}</Text>}
-                keyExtractor={data.indexOf(companyStatusList)}
-            /> */}
             </ScrollView>
 
         )
@@ -71,16 +54,5 @@ export default () => {
 }
 
 const styles = StyleSheet.create({
-    bigBlue: {
-        color: 'blue',
-        fontWeight: 'bold',
-        fontSize: 30,
-        margin: 20,
-    },
-    Container: {
-        margin: 30
-    },
-    icon:{
-        textAlign:'right',
-    }
+
 });

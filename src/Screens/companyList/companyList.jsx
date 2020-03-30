@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, Button, Platform, Text, ImageBackground, Image, ScrollView } from 'react-native';
+import React, { Component } from './node_modules/react';
+import { StyleSheet, View, Button, Platform, Text, ImageBackground, Image, ScrollView } from './node_modules/react-native';
 import { Thumbnail, Card, CardItem, Left, Body, Content, Container } from 'native-base';
 
 export default class App extends Component {
@@ -20,9 +20,7 @@ export default class App extends Component {
     render() {
         return (
             <ScrollView>
-                <View style={{ padding: 5, flexBasis: '30%' }}>
-                  
-
+                <View style={{ padding: 5, flexBasis: '30%' }}>     
                     <ImageBackground
                         source={require('../../Static/images/BgcmpnyList.png')}
                         style={{ width: undefined, paddingTop: 48, padding: 16 }}>
@@ -32,8 +30,6 @@ export default class App extends Component {
                             fontSize: 20,
                             marginTop: -25,
                         }}>Companies</Text>
-
-                        {/* <Text>Image</Text> */}
                         <View style={{ alignItems: 'center', height: '20%' }}>
                             <Image
                                 source={require('../../Static/images/companyList.png')}
@@ -41,81 +37,60 @@ export default class App extends Component {
                             />
                         </View>
                     </ImageBackground>
-
-
                     <Container style={styles.container}>
                         <Content style={{ padding: 5 }}>
                             <Card style={styles.card1}>
                                 <CardItem>
-
                                     <Body>
                                         <Text>Cost sheet</Text>
                                         <Text>cost</Text>
                                     </Body>
-
                                 </CardItem>
                             </Card>
                             <Card style={styles.card2}>
                                 <CardItem>
-
                                     <Body>
                                         <Text>Cost sheet</Text>
                                         <Text>cost</Text>
                                     </Body>
-
                                 </CardItem>
                             </Card>
                             <Card style={styles.card3}>
                                 <CardItem>
-
                                     <Body>
                                         <Text>Cost sheet</Text>
                                         <Text>cost</Text>
                                     </Body>
-
                                 </CardItem>
                             </Card>
                             <Card style={styles.card4}>
                                 <CardItem>
-
                                     <Body>
                                         <Text>Cost sheet</Text>
                                         <Text>cost</Text>
                                     </Body>
-
                                 </CardItem>
                             </Card>
                             <Card style={styles.card5}>
                                 <CardItem>
-
                                     <Body>
                                         <Text>Cost sheet</Text>
                                         <Text>cost</Text>
                                     </Body>
-
                                 </CardItem>
                             </Card>
                             <Card style={styles.card6}>
                                 <CardItem>
-
                                     <Body>
                                         <Text>Cost sheet</Text>
                                         <Text>cost</Text>
                                     </Body>
-
                                 </CardItem>
                             </Card>
-
                         </Content>
                     </Container>
                 </View>
-            </ScrollView>
-
-
-            // <View style={styles.MainContainer}>
-            //     <Text style={{ marginBottom: 20, fontSize: 20 }}> {this.state.TextHolder} </Text>
-            //     <Button title="Change Text Component Text" onPress={this.ChangeTextFunction} />
-            // </View> 
+            </ScrollView> 
         );
     }
 }
