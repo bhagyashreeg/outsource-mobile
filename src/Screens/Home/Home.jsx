@@ -41,7 +41,7 @@ export default () => {
     } else {
         return (
             <ScrollView style={styles.Container}>
-                <Icon name='ios-menu' style={StyleSheet.icon}/>
+                <Icon name="ios-menu" style={styles.icon}/>
                 <Center>
                     <Text>
                         Home
@@ -81,6 +81,6 @@ const styles = StyleSheet.create({
         margin: 30
     },
     icon:{
-        alignItems:'center',
+        textAlign:'right',
     }
 });
