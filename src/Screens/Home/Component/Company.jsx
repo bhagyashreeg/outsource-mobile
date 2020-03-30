@@ -6,6 +6,7 @@ export default (props) => {
     let { countryList, companyStatusList } = props.company;
     // console.log("prps", props);
     return (
+        
         <View>
             <Text>Display data!</Text>
             <Text>The country code is!            {countryList[0].countryCode}</Text>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Text, ScrollView, Button, StyleSheet, AsyncStorage } from 'react-native';
+import { Text, ScrollView, Button, StyleSheet, AsyncStorage} from 'react-native';
+import { Icon} from 'native-base';
 import { Center } from '../../Components/Center';
 import Company from './Component/Company';
 
@@ -40,6 +41,7 @@ export default () => {
     } else {
         return (
             <ScrollView style={styles.Container}>
+                <Icon name='ios-menu' style={StyleSheet.icon}/>
                 <Center>
                     <Text>
                         Home
@@ -77,5 +79,8 @@ const styles = StyleSheet.create({
     },
     Container: {
         margin: 30
+    },
+    icon:{
+        alignItems:'center',
     }
 });
