@@ -7,11 +7,12 @@ import {
 } from '@react-navigation/drawer';
 import { Image } from 'react-native';
 
+
 import Home from './Screens/Home/Home';
 import Settings from './Screens/Settings/Settings';
-import companyList from './Screens/companyList/companyList';
 
 import { AuthContext } from "./Context/AuthProvider";
+import { Content, Container, Icon, Header,Left} from "native-base";
 
 const Drawer = createDrawerNavigator();
 
@@ -43,6 +44,7 @@ function CustomDrawerContent(props) {
 }
 
 export const AppNavigator = ({ }) => {
+  
     return (
         <Drawer.Navigator
             initialRouteName="Home"
@@ -58,9 +60,9 @@ export const AppNavigator = ({ }) => {
             }}
             drawerContent={props => <CustomDrawerContent {...props} />}
         >
-            <Drawer.Screen name="Home" component={Home} />
+            <Drawer.Screen name="Home" component={Home}  />
             <Drawer.Screen name="Settings" component={Settings} />
-            <Drawer.Screen name="companyList" component={companyList} />
         </Drawer.Navigator>
+       
     );
 };
