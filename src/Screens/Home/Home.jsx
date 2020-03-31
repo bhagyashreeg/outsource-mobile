@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, ScrollView, Button, StyleSheet, AsyncStorage } from 'react-native';
+import { Text, ScrollView, Button, StyleSheet, AsyncStorage, Image, Picker } from 'react-native';
 import { Center } from '../../Components/Center';
 import Company from './Component/Company';
 
@@ -35,7 +35,8 @@ export default () => {
 
     if (loading || companyData == null) {
         return (<Center>
-            <Text>LOADING...</Text>
+            {/* <Text>LOADING...</Text> */}
+            <Image source={require('../../../assets/31.gif')} />
         </Center>)
     } else {
         return (
@@ -47,6 +48,25 @@ export default () => {
                 </Center>
 
                 <Company company={companyData} />
+                {/* -------------------------------------------------------------------------------------------------------------- */}
+                {/* <Text> Please select an item </Text>
+                <Picker
+                    selectedValue={this.state.choice}
+                    mode="dropdown"
+                    onValueChange={(itemValue, itemIndex) =>
+                        this.setState({ choice: itemValue })
+                    }>
+                    <Picker.Item label="PETER" value="PETER" />
+                    <Picker.Item label="JOHN" value="JOHN" />
+                </Picker>
+                <Text>{this.state.choice}</Text>
+
+                <Select placeholder="Please select..." >
+                    {companyData.countryList.map((country, index) => {
+                        return <Option key={index} value={country.countryId} name={country.countryCode}>{country.countryCode}</Option>
+                    })}
+                </Select> */}
+                {/* -------------------------------------------------------------------------------------------------------------- */}
                 {/* <Text>Display data!{data.companyStatusList[0]}</Text> */}
                 {/* <FlatList
                 data={data}
