@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, ScrollView, Button, StyleSheet, AsyncStorage} from 'react-native';
+import { Text, ScrollView, Button, StyleSheet, AsyncStorage,Image} from 'react-native';
 import { Icon} from 'native-base';
 import { Center } from '../../Components/Center';
 import Company from './Component/Company';
@@ -36,20 +36,23 @@ export default () => {
 
     if (loading || companyData == null) {
         return (<Center>
-            <Text>LOADING...</Text>
+            {/* <Text>LOADING...</Text> */}
+            <Image source={require('../../../assets/31.gif')} />
+
+           
         </Center>)
     } else {
         return (
             <ScrollView>
-                <Center>
+                 <Center>
                     <Text>
                         Home
                     </Text>
-                </Center>
+                </Center> 
                 <Company company={companyData} />
-            </ScrollView>
+             </ScrollView> 
 
-        )
+        );
     }
 }
 
