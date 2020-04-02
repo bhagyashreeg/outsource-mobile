@@ -23,7 +23,7 @@ export default (props) => {
                         source={require('../../../Static/images/company-list-icon.png')}
                         style={styles.logo}
                     />
-                    <View>
+                    {/* <View>
                         <Text>The country code is!            {countryList[0].countryCode}</Text>
                         <Text>The country ID is!              {countryList[0].countryId}</Text>
                         <Text>The country name is!            {countryList[0].countryName}</Text>
@@ -32,32 +32,53 @@ export default (props) => {
                         <Text>The company status name is 2!   {companyStatusList[1].companyStatusName}</Text>
                         <Text>The company status name is 3!   {companyStatusList[2].companyStatusName}</Text>
                         <Text>The company status name is 4!   {companyStatusList[3].companyStatusName}</Text>
-                    </View>
+                    </View> */}
                 </View>
             </ImageBackground>
             <Container>
                 <Content style={styles.content}>
-                    <Card style={styles.card}>
-                        <CardItem>
+                    <Card style={styles.card} >
+                        <Image
+                            style={{
+                                flex: 1,
+                                // resizeMode,
+                            }}
+                            source={require('../../../../assets/totalEmployees.jpg')}
+                        />
+                        <CardItem >
                             <Body>
-                                <Text>Cost sheet</Text>
-                                <Text>cost</Text>
+                                <Text>Total Employees</Text>
+                                <Text>859</Text>
                             </Body>
                         </CardItem>
                     </Card>
                     <Card style={styles.card}>
+                        <Image
+                            style={{
+                                flex: 1,
+                                // resizeMode,
+                            }}
+                            source={require('../../../../assets/companiesRegistered.jpg')}
+                        />
                         <CardItem>
                             <Body>
-                                <Text>Cost sheet</Text>
-                                <Text>cost</Text>
+                                <Text>Companies Registered</Text>
+                                <Text>25</Text>
                             </Body>
                         </CardItem>
                     </Card>
                     <Card style={styles.card}>
+                        <Image
+                            style={{
+                                flex: 1,
+                                // resizeMode,
+                            }}
+                            source={require('../../../../assets/totalRevenue.jpg')}
+                        />
                         <CardItem>
                             <Body>
-                                <Text>Cost sheet</Text>
-                                <Text>cost</Text>
+                                <Text>Total Revenue</Text>
+                                <Text>100000</Text>
                             </Body>
                         </CardItem>
                     </Card>

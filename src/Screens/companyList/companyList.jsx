@@ -1,156 +1,87 @@
-import React, { Component } from './node_modules/react';
-import { StyleSheet, View, Button, Platform, Text, ImageBackground, Image, ScrollView } from './node_modules/react-native';
-import { Thumbnail, Card, CardItem, Left, Body, Content, Container } from 'native-base';
+import React, { useState, useEffect } from 'react';
+import { Text, ScrollView, Button, StyleSheet, AsyncStorage, Image, TextInput } from 'react-native';
+import { Icon, View } from 'native-base';
+import { Center } from '../../Components/Center';
+import Company from './Component/List';
 
-export default class App extends Component {
+const baseURL = 'https://nmsserver.herokuapp.com/proxy/api/user/company/redeem';
 
-//     constructor() {
-//         super();
-//         this.state = {
-//             TextHolder: 'This is Old Sample Text'
-//         }
-//     }
+export default () => {
 
-//     ChangeTextFunction = () => {
-//         this.setState({
-//             TextHolder: "This is New Text."
-//         })
-//     }
+    const [loading, setLoading] = useState(true);
+    const [companyData, setCompanyData] = useState(null);
 
-    render() {
+    useEffect(() => {
+        async function fetchData() {
+            setLoading(true);
+            let loginTokenString = await AsyncStorage.getItem("user");
+            let loginData = JSON.parse(loginTokenString);
+            await fetch(baseURL, {
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    // 'token': loginData.loginToken
+                    'token': "GAnpMklBJmRu3bkltjYygPB/DsgpzZae+VnpfwBBQN0="
+                },
+                method: 'POST'
+            })
+                .then(response => response.json())
+                .then(async (data) => {
+                    await setLoading(false);
+                    await setCompanyData(data);
+                }).catch(() => {
+                    setLoading(false);
+                });
+        }
+        fetchData();
+    }, []);
+
+    if (loading || companyData == null) {
+        return (<Center>
+            {/* <Text>LOADING...</Text> */}
+            <Image source={require('../../../assets/loadingGif.gif')} />
+        </Center>)
+    } else {
         return (
-            <ScrollView>
-                <View style={{ padding: 5, flexBasis: '30%' }}>     
-                    <ImageBackground
-                        source={require('../../Static/images/BgcmpnyList.png')}
-                        style={{ width: undefined, paddingTop: 48, padding: 16 }}>
-
-                        <Text style={{
-                            textAlign: 'center',
-                            fontSize: 20,
-                            marginTop: -25,
-                        }}>Companies</Text>
-                        <View style={{ alignItems: 'center', height: '20%' }}>
-                            <Image
-                                source={require('../../Static/images/companyList.png')}
-                                style={{ width: 80, height: 80, borderRadius: 140 / 2, marginStart: '-60%' }}
-                            />
-                        </View>
-                    </ImageBackground>
-                    <Container style={styles.container}>
-                        <Content style={{ padding: 5 }}>
-                            <Card style={styles.card1}>
-                                <CardItem>
-                                    <Body>
-                                        <Text>Cost sheet</Text>
-                                        <Text>cost</Text>
-                                    </Body>
-                                </CardItem>
-                            </Card>
-                            <Card style={styles.card2}>
-                                <CardItem>
-                                    <Body>
-                                        <Text>Cost sheet</Text>
-                                        <Text>cost</Text>
-                                    </Body>
-                                </CardItem>
-                            </Card>
-                            <Card style={styles.card3}>
-                                <CardItem>
-                                    <Body>
-                                        <Text>Cost sheet</Text>
-                                        <Text>cost</Text>
-                                    </Body>
-                                </CardItem>
-                            </Card>
-                            <Card style={styles.card4}>
-                                <CardItem>
-                                    <Body>
-                                        <Text>Cost sheet</Text>
-                                        <Text>cost</Text>
-                                    </Body>
-                                </CardItem>
-                            </Card>
-                            <Card style={styles.card5}>
-                                <CardItem>
-                                    <Body>
-                                        <Text>Cost sheet</Text>
-                                        <Text>cost</Text>
-                                    </Body>
-                                </CardItem>
-                            </Card>
-                            <Card style={styles.card6}>
-                                <CardItem>
-                                    <Body>
-                                        <Text>Cost sheet</Text>
-                                        <Text>cost</Text>
-                                    </Body>
-                                </CardItem>
-                            </Card>
-                        </Content>
-                    </Container>
+            <ScrollView >
+                <View style={styles.searchBarContainer}>
+                    {/* Search bar for searching the company details  */}
+                    <TextInput
+                        style={styles.inputStyle}
+                        returnKeyType="search"
+                        placeholder="Search text"
+                    />
+                    <Icon
+                        name='bhagya ua supposed to put the search icon here'
+                        color='#000'
+                        size={14}
+                    />
                 </View>
-            </ScrollView> 
-        );
+                <Button
+                    title="Search"
+                    onPress={() => console.log('The button was pressed ')}
+                />
+                <Center>
+                    <Text>
+                        CompanyList
+                    </Text>
+                </Center>
+                {/* displayng the comapnies list in a table */}
+                <ScrollView horizontal={true}>
+                    <Company company={companyData} />
+                </ScrollView>
+            </ScrollView>
+        )
     }
 }
 
-
-const styles = StyleSheet.create(
-    {
-        // MainContainer:
-        // {
-        //     justifyContent: 'center',
-        //     alignItems: 'center',
-        //     flex: 1,
-        //     marginTop: (Platform.OS) === 'ios' ? 20 : 0
-        // }
-
-        container: {
-            // height:800,
-            overflow: 'hidden',
-            flexWrap: 'wrap',
-            flexDirection: 'row',
-            // flexBasis:'30%',
-            flexDirection: 'row',
-
-        },
-        card1: {
-            position: 'relative',
-            width: 160,
-            height: 100,
-
-        },
-        card2: {
-            position: 'absolute',
-            width: 160,
-            height: 100,
-            marginLeft: 180,
-            alignContent: 'stretch',
-        },
-        card3: {
-            position: 'relative',
-            width: 160,
-            height: 100,
-        },
-        card4: {
-            position: 'relative',
-            width: 160,
-            height: 100,
-            marginLeft: 180,
-            marginTop: -105,
-
-        },
-        card5: {
-            position: 'relative',
-            width: 160,
-            height: 100,
-        },
-        card6: {
-            position: 'absolute',
-            width: 160,
-            height: 100,
-            marginLeft: 180,
-            marginTop: 225,
-        },
-    });
+const styles = StyleSheet.create({
+    searchBarContainer: {
+        flexDirection: 'row',
+        borderBottomWidth: 1,
+        borderColor: '#000',
+        paddingBottom: 100,
+    },
+    inputStyle: {
+        flex: 1,
+    },
+});
