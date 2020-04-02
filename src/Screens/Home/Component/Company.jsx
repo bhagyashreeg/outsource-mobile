@@ -1,24 +1,23 @@
 
 import React from 'react';
-import { StyleSheet, View, Text, ImageBackground, Image } from 'react-native';
+import { StyleSheet, View, Text, ImageBackground, Image, ScrollView } from 'react-native';
 import { Card, CardItem, Body, Content, Container } from 'native-base';
+import { CardStyleInterpolators } from '@react-navigation/stack';
 
 export default (props) => {
 
     let { countryList, companyStatusList } = props.company;
 
     return (
-        <View style={styles.container}>
-            <ImageBackground
+        <ScrollView>
+            <View style={styles.container}>
+            <ImageBackground 
+                style={styles.bgimg}
                 source={require('../../../Static/images/company-list-bg.png')}
-                style={{ paddingTop: 48, padding: 16 }}>
+            >
 
-                <Text style={{
-                    textAlign: 'center',
-                    fontSize: 20,
-                    marginTop: -25,
-                }}>Companies</Text>
-                <View style={{ alignItems: 'center', height: 300 }}>
+                <Text style={styles.bgtext}>Companies</Text>
+                <View style={styles.bckground}>
                     <Image
                         source={require('../../../Static/images/company-list-icon.png')}
                         style={styles.logo}
@@ -37,6 +36,7 @@ export default (props) => {
             </ImageBackground>
             <Container>
                 <Content style={styles.content}>
+                    
                     <Card style={styles.card} >
                         <Image
                             style={{
@@ -52,6 +52,7 @@ export default (props) => {
                             </Body>
                         </CardItem>
                     </Card>
+
                     <Card style={styles.card}>
                         <Image
                             style={{
@@ -65,8 +66,9 @@ export default (props) => {
                                 <Text>Companies Registered</Text>
                                 <Text>25</Text>
                             </Body>
-                        </CardItem>
+                        </CardItem> 
                     </Card>
+
                     <Card style={styles.card}>
                         <Image
                             style={{
@@ -82,7 +84,15 @@ export default (props) => {
                             </Body>
                         </CardItem>
                     </Card>
+
                     <Card style={styles.card}>
+                    <Image
+                            style={{
+                                flex: 1,
+                                // resizeMode,
+                            }}
+                            source={require('../../../../assets/totalRevenue.jpg')}
+                        />
                         <CardItem>
                             <Body>
                                 <Text>Cost sheet</Text>
@@ -90,7 +100,15 @@ export default (props) => {
                             </Body>
                         </CardItem>
                     </Card>
+
                     <Card style={styles.card}>
+                    <Image
+                            style={{
+                                flex: 1,
+                                // resizeMode,
+                            }}
+                            source={require('../../../../assets/totalRevenue.jpg')}
+                        />
                         <CardItem>
                             <Body>
                                 <Text>Cost sheet</Text>
@@ -98,7 +116,15 @@ export default (props) => {
                             </Body>
                         </CardItem>
                     </Card>
+
                     <Card style={styles.card}>
+                    <Image
+                            style={{
+                                flex: 1,
+                                // resizeMode,
+                            }}
+                            source={require('../../../../assets/totalRevenue.jpg')}
+                        />
                         <CardItem>
                             <Body>
                                 <Text>Cost sheet</Text>
@@ -106,9 +132,12 @@ export default (props) => {
                             </Body>
                         </CardItem>
                     </Card>
+
                 </Content>
             </Container>
         </View>
+        </ScrollView>
+        
     );
 }
 
@@ -127,5 +156,20 @@ const styles = StyleSheet.create({
     },
     card: {
         padding: 10
+    },
+    bgimg:{
+        paddingTop: 48, 
+        padding: 16,
+
+    },
+    bgtext:{
+        textAlign: 'center',
+        fontSize: 20,
+        marginTop: -25,
+    },
+    bckground:{
+        alignItems: 'center',
+        height: 200,
     }
+    
 });
