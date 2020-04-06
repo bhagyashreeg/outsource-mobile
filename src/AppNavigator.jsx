@@ -10,7 +10,7 @@ import { Image } from 'react-native';
 
 import Home from './Screens/Home/Home';
 import Settings from './Screens/Settings/Settings';
-import companyList from './Screens/CompanyList/companyList';
+import companyList from './Screens/CompanyList/companyDummtyList';
 
 import { AuthContext } from "./Context/AuthProvider";
 
