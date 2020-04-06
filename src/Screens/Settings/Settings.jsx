@@ -13,9 +13,6 @@ export default FunctionBasedForm = () => {
             <Picker
                 selectedValue={PickerValueHolder}
                 onValueChange={(itemValue, itemIndex) => setPickerValueHolder({ PickerValueHolder: itemValue })} >
-                {companyStatusList.map((item, key) => (
-                    <Picker.Item label={item.companyStatusName} value={item.companyStatusName} key={key} />)
-                )}
             </Picker>
             <Button title="Click Here To Get Picker Selected Item Value" onPress={GetPickerSelectedItemValue()} />
         </View>
