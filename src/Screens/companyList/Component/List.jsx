@@ -79,13 +79,13 @@ export default (props) => {
                 />
                 <Rows data={tableData} />{/* Displaying statistically   */}
                 {/* {props.company.companyList.map((item, key) => ( */}
-                    <Row
+                    {/* <Row
                         data={
                             getRowsData()
                         }
                         style={styles.dataRow}
                         textStyle={styles.text}
-                    />
+                    /> */}
                 {/* ))} */}
                 {/* Just to check whether props is working here or not   */}
                 {/* {props.company.companyList.map((item, key) => (
@@ -97,7 +97,7 @@ export default (props) => {
                     </Text>)
                 )} */}
             </Table>
-        </View>
+        </View>  
     )
 }
 const styles = StyleSheet.create({
