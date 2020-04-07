@@ -19,8 +19,7 @@ export default () => {
             await fetch(baseURL, {
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8',
-                    // 'token': loginData.loginToken
-                    'token': "GAnpMklBJmRu3bkltjYygPB/DsgpzZae+VnpfwBBQN0="
+                    'token': loginData.loginToken
                 },
                 method: 'POST'
             })
@@ -37,23 +36,16 @@ export default () => {
 
     if (loading || companyData == null) {
         return (<Center>
-            {/* <Text>LOADING...</Text> */}
             <Image source={require('../../../assets/loadingGif.gif')} />
         </Center>)
     } else {
         return (
             <ScrollView >
                 <View style={styles.searchBarContainer}>
-                    {/* Search bar for searching the company details  */}
                     <TextInput
                         style={styles.inputStyle}
                         returnKeyType="search"
                         placeholder="Search text"
-                    />
-                    <Icon
-                        name='bhagya ua supposed to put the search icon here'
-                        color='#000'
-                        size={14}
                     />
                 </View>
                 <Button
@@ -65,7 +57,6 @@ export default () => {
                         CompanyList
                     </Text>
                 </Center>
-                {/* displayng the comapnies list in a table */}
                 <ScrollView horizontal={true}>
                     <Company company={companyData} />
                 </ScrollView>

@@ -1,30 +1,28 @@
 
 import React, { useState } from 'react';
-import { Text, View, Button, StyleSheet, Picker, StatusBar, Dimensions } from 'react-native';
-// import {Table} from 'react-native-table-component';
-import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+import { Text, View, Button, StyleSheet } from 'react-native';
+import { Table, Row, Rows } from 'react-native-table-component';
 
 
 export default (props) => {
-    StatusBar.setHidden(true);
-    StatusBar.setBackgroundColor = "#00BCD4";
 
-    let { companyList, setcompanyList } = props.company;
+    console.log("props", props);
+
     const head = [
-        "\t\tSl No\t\t",
-        "\tCompany Registration Name\t",
-        "\tCompany Registration Number\t",
-        "\tCompany Type\t",
-        "\tContact Person\t",
-        "\tContact Number\t",
-        "\tContact Email\t",
-        "\tCompany Address\t",
-        "\tCompany Status\t",
-        "\tPAN\t",
-        "\tGST\t",
-        "\tState\t",
-        "\tPinCode\t",
-        "\tStatus\t",
+        "Sl No",
+        "Company Registration Name",
+        "Company Registration Number",
+        "Company Type",
+        "Contact Person",
+        "Contact Number",
+        "Contact Email",
+        "Company Address",
+        "Company Status",
+        "PAN",
+        "GST",
+        "State",
+        "PinCode",
+        "Status",
     ];
     let tableData = [
         ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14'],
@@ -33,16 +31,11 @@ export default (props) => {
         ['a', 'b', 'c', 'd', '1', '2', '3', '4', '1', '2', '3', '4', '1', '2'],
     ];
 
-    console.log("prps", props);
-    console.log("Table datas", tableData);
-
     const getRowsData = function () {
         var items = props.company.companyList;
-        console.log("poiuytrewasdfghjlnbvcxz",items)
         return items.map((row, index) => {
-            return <Row key={index} data={row}  />
+            return <Row key={index} data={row} />
         })
-        
     }
 
     return (
@@ -60,42 +53,14 @@ export default (props) => {
             <Text>	Country :-{props.company.companyList[0].countryName}</Text>
             <Text>	State :-{props.company.companyList[0].stateName}</Text>
             <Text>	Pin Code :-{props.company.companyList[0].pinCode}</Text>
-            <Text>	Statuss :-{props.company.companyList[0].isActive}</Text>
-            <Text> USing map{'\n'}
-                {props.company.companyList.map((item, key) => (
-                    <Text>
-                        {'\t\t'}key={key + '\n'}
-                        {'\t\t\t\t' + item.companyStatusName + '\n'}
-                        {'\t\t\t\t' + item.pinCode + '\n'}
-                        {'\t\t\t\t' + item.companyName + '\n'}
-                    </Text>)
-                )}
-            </Text>
+            <Text>	Status :-{props.company.companyList[0].isActive}</Text>
             <Table borderStyle={styles.border} style={styles.table}>
                 <Row
                     data={head}
                     style={styles.head}
                     textStyle={styles.text}
                 />
-                <Rows data={tableData} />{/* Displaying statistically   */}
-                {/* {props.company.companyList.map((item, key) => ( */}
-                    {/* <Row
-                        data={
-                            getRowsData()
-                        }
-                        style={styles.dataRow}
-                        textStyle={styles.text}
-                    /> */}
-                {/* ))} */}
-                {/* Just to check whether props is working here or not   */}
-                {/* {props.company.companyList.map((item, key) => (
-                    <Text>
-                        {'\t\t'}key={key}
-                        {'\t\t\t\t' + item.companyStatusName + '\t'}
-                        {'\t\t\t\t' + item.pinCode + '\t'}
-                        {'\t\t\t\t' + item.companyName + '\n'}
-                    </Text>)
-                )} */}
+                <Rows data={tableData} />
             </Table>
         </View>  
     )
