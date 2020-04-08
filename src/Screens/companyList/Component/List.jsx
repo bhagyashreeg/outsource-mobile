@@ -60,7 +60,7 @@ export default (props) => {
                     style={styles.head}
                     textStyle={styles.text}
                 />
-                <Rows data={tableData} />
+                <Rows data={getRowsData}  />                                                                                                                                                                                                                                                                                                                                                                                    
             </Table>
         </View>  
     )
