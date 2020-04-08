@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
-import { List, ListItem, Thumbnail, Text, Left, Body, Right, Button } from 'native-base';
+import { List, ListItem, Icon, Text, Left, Body, Right, Button } from 'native-base';
 
 export default (props) => {
     return (
@@ -10,7 +10,7 @@ export default (props) => {
                 {props.company.companyList.map((row, index) => {
                     return <ListItem thumbnail key={index}>
                         <Left>
-                            <Thumbnail circle source={{ uri: 'Image URL' }} />
+                            <Icon active name='md-home' />
                         </Left>
                         <Body>
                             <Text>{row.companyName}</Text>

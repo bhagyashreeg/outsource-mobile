@@ -49,7 +49,7 @@ export default () => {
                 <Content>
                     <Item>
                         <Input placeholder="Search" />
-                        <Icon name="ios-search" />
+                        <Icon active name="ios-search" />
                     </Item>
                     <Company company={companyData} />
                 </Content>
