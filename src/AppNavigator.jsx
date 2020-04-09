@@ -10,10 +10,9 @@ import { Image } from 'react-native';
 
 import Home from './Screens/Home/Home';
 import Settings from './Screens/Settings/Settings';
-import companyList from './Screens/companyList/companyList';
+import companyList from './Screens/CompanyList/CompanyList';
 
 import { AuthContext } from "./Context/AuthProvider";
-import { Content, Container, Icon, Header, Left } from "native-base";
 
 const Drawer = createDrawerNavigator();
 
