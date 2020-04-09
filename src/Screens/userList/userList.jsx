@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, AsyncStorage, Image } from 'react-native';
 import { Container, Icon, Header, Button, Item, Input, Text, Title, Content } from 'native-base';
 import { Center } from '../../Components/Center';
-import Company from './Component/List';
+import Users from './Component/List';
 
 
-const baseURL = 'https://nmsserver.herokuapp.com/proxy/api/user/company/redeem';
+const baseURL = 'https://nmsserver.herokuapp.com/proxy/api/user/employee-list/redeem';
 
 export default () => {
 
     const [loading, setLoading] = useState(true);
-    const [companyData, setCompanyData] = useState(null);
+    const [usersData, setUsersData] = useState(null);
 
     useEffect(() => {
         async function fetchData() {
@@ -27,7 +27,7 @@ export default () => {
                 .then(response => response.json())
                 .then(async (data) => {
                     await setLoading(false);
-                    await setCompanyData(data);
+                    await setUsersData(data);
                 }).catch(() => {
                     setLoading(false);
                 });
@@ -35,7 +35,7 @@ export default () => {
         fetchData();
     }, []);
 
-    if (loading || companyData == null) {
+    if (loading || usersData == null) {
         return (<Center>
             <Image source={require('../../../assets/loadingGif.gif')} />
         </Center>)
@@ -44,11 +44,15 @@ export default () => {
             <Container>
                 <Header searchBar rounded>
                     <Title>
-                        Company List
+                        Users List
                     </Title>
                 </Header>
                 <Content>
-                    <Company company={companyData} />
+                    {/* <Item>
+                        <Input placeholder="Search" />
+                        <Icon active name="ios-search" />
+                    </Item> */}
+                    <Users user={usersData} />
                 </Content>
             </Container>
         )
