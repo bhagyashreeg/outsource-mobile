@@ -66,7 +66,7 @@ export default () => {
                     </Text>
                 </Center>
                 {/* displayng the comapnies list in a table */}
-                <ScrollView horizontal={true}>
+                <ScrollView>
                     <Company company={companyData} />
                 </ScrollView>
             </ScrollView>

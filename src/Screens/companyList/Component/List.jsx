@@ -1,13 +1,23 @@
 
-import React, { useState } from 'react';
-import { Text, View, Button, StyleSheet, Picker, StatusBar, Dimensions } from 'react-native';
-// import {Table} from 'react-native-table-component';
+import React, { useState, useEffect } from 'react';
+import { Text, View, Button, StyleSheet, Picker, StatusBar, Dimensions, ScrollView } from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+
 
 
 export default (props) => {
     StatusBar.setHidden(true);
     StatusBar.setBackgroundColor = "#00BCD4";
+
+    let tableDataFrmApi;
+    useEffect(() => {
+        const tableDataFrmApi = function() {
+           return ([props.company.companyList].values)
+        }
+        tableDataFrmApi()
+
+    }, []);
+    console.log("cjkcnjc"+tableDataFrmApi())
 
     let { companyList, setcompanyList } = props.company;
     const head = [
@@ -33,16 +43,16 @@ export default (props) => {
         ['a', 'b', 'c', 'd', '1', '2', '3', '4', '1', '2', '3', '4', '1', '2'],
     ];
 
+    // let tableDataFrmApi = [props.company.companyList].values
+
     console.log("prps", props);
-    console.log("Table datas", tableData);
+    // console.log("Table datas", tableData);
 
     const getRowsData = function () {
         var items = props.company.companyList;
-        console.log("poiuytrewasdfghjlnbvcxz",items)
         return items.map((row, index) => {
-            return <Row key={index} data={row}  />
+            return <Row key={index} data={row} />
         })
-        
     }
 
     return (
@@ -71,32 +81,18 @@ export default (props) => {
                     </Text>)
                 )}
             </Text>
-            <Table borderStyle={styles.border} style={styles.table}>
-                <Row
-                    data={head}
-                    style={styles.head}
-                    textStyle={styles.text}
-                />
-                <Rows data={tableData} />{/* Displaying statistically   */}
-                {/* {props.company.companyList.map((item, key) => ( */}
+            <ScrollView horizontal={true}>
+                <Table borderStyle={styles.border} style={styles.table}>
                     <Row
-                        data={
-                            getRowsData()
-                        }
-                        style={styles.dataRow}
-                        textStyle={styles.text}
+                        data={head}
+                        style={{ flexWrap: 'wrap' }}
                     />
-                {/* ))} */}
-                {/* Just to check whether props is working here or not   */}
-                {/* {props.company.companyList.map((item, key) => (
-                    <Text>
-                        {'\t\t'}key={key}
-                        {'\t\t\t\t' + item.companyStatusName + '\t'}
-                        {'\t\t\t\t' + item.pinCode + '\t'}
-                        {'\t\t\t\t' + item.companyName + '\n'}
-                    </Text>)
-                )} */}
-            </Table>
+                    <Rows
+                        // data={getRowsData()}
+                        // data={tableDataFrmApi}
+                    />
+                </Table>
+            </ScrollView>
         </View>
     )
 }
