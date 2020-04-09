@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Text, ScrollView, Button, StyleSheet, AsyncStorage, Image, TextInput } from 'react-native';
-import { Icon, View } from 'native-base';
+import { View, StyleSheet, AsyncStorage, Image } from 'react-native';
+import { Container, Icon, Header, Button, Item, Input, Text, Title, Content } from 'native-base';
 import { Center } from '../../Components/Center';
 import Company from './Component/List';
 
@@ -40,39 +40,20 @@ export default () => {
         </Center>)
     } else {
         return (
-            <ScrollView >
-                <View style={styles.searchBarContainer}>
-                    <TextInput
-                        style={styles.inputStyle}
-                        returnKeyType="search"
-                        placeholder="Search text"
-                    />
-                </View>
-                <Button
-                    title="Search"
-                    onPress={() => console.log('The button was pressed ')}
-                />
-                <Center>
-                    <Text>
-                        CompanyList
-                    </Text>
-                </Center>
-                <ScrollView horizontal={true}>
+            <Container>
+                <Header searchBar rounded>
+                    <Title>
+                        Company List
+                    </Title>
+                </Header>
+                <Content>
+                    <Item>
+                        <Input placeholder="Search" />
+                        <Icon active name="ios-search" />
+                    </Item>
                     <Company company={companyData} />
-                </ScrollView>
-            </ScrollView>
+                </Content>
+            </Container>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    searchBarContainer: {
-        flexDirection: 'row',
-        borderBottomWidth: 1,
-        borderColor: '#000',
-        paddingBottom: 100,
-    },
-    inputStyle: {
-        flex: 1,
-    },
-});
