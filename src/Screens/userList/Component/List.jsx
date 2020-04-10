@@ -15,8 +15,8 @@ export default (props, { navigation }) => {
     const Stack = createStackNavigator();
 
     function searchUser(textToSearch) {
-        setUserListValuesFiltered = props.user.employeeList.filter(i =>
-            i.employeeFirstName.includes(textToSearch))
+        setUserListValuesFiltered(props.user.employeeList.filter(i =>
+            i.employeeFirstName.includes(textToSearch)))
         alert(setUserListValuesFiltered)
     }
 

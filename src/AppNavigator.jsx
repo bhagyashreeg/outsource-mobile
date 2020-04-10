@@ -1,3 +1,4 @@
+
 import React, { useContext } from "react";
 import {
     createDrawerNavigator,
@@ -41,9 +42,10 @@ function CustomDrawerContent(props) {
                     return (
                         <Text>
                             <Text>
-                                <Icon name={'md-power'}></Icon>
+                                
                             </Text>
                             <Text>
+                            <Icon name={'md-power'}></Icon>
                                 <Text style = {styles.logoutText}>Logout</Text>
                             </Text>
                         </Text>
@@ -87,25 +89,23 @@ export const AppNavigator = ({ }) => {
                 drawerIcon: config => <Icon name={'md-list'}></Icon>
             }} />
             <Drawer.Screen name="User List" component={userList} options={{
-                drawerIcon: config => <Icon name={'md-list'}></Icon>
+                drawerIcon: config => <Icon name={'md-list'} ></Icon>
             }} />
             <Drawer.Screen name="Accounts" component={bankAnnexure} options={{
                 drawerIcon: config => <Icon name={'md-calculator'}></Icon>
             }} />
-            <Drawer.Screen name="Settings" component={Settings} options={{
+            <Drawer.Screen name="Settings" component={Settings
+} options={{
                 drawerIcon: config => <Icon name={'md-settings'}></Icon>
             }} />
         </Drawer.Navigator>
-
     );
 };
-
 const styles = StyleSheet.create({
     logoutText: {
         fontSize: 14,
-        color: "yellow",
+        color: "#D9D273",
         fontWeight: "bold",
-        margin: 20,
         position: 'absolute',
     }
 })

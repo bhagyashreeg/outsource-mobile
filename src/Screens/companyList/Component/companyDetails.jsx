@@ -1,10 +1,14 @@
 import React from 'react';
 import { Text } from 'native-base';
-// import { Center } from '../../Components/Center';
+import { Center } from '../../../Components/Center';
 
 
 export default (props) => {
     return (
-        <Text>Details of company</Text>       
+        <Center>
+            <Text>
+               Company Details
+            </Text>
+        </Center>
     )
 }
