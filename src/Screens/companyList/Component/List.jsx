@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { ScrollView, Modal, StyleSheet, View } from 'react-native';
 import { List, ListItem, Icon, Text, Left, Body, Right, Button, Item, Input } from 'native-base';
 
-
 export default (props) => {
     const companyListValues = props.company.companyList;
     let [companyListValuesFiltered, setCompanyListValuesFiltered] = useState(props.company.companyList);
@@ -11,11 +10,12 @@ export default (props) => {
     const [selected, setSelected] = useState([null]);
 
     function searchUser(textToSearch) {
-        setCompanyListValuesFiltered = props.company.companyList.filter(i =>
-            i.companyName.includes(textToSearch))
-        alert(companyListValuesFiltered)
+        setCompanyListValuesFiltered(companyListValues.filter(i =>
+            i.companyName.toLowerCase().includes(textToSearch.toLowerCase())))
+        if (companyListValuesFiltered.length <= 0) {
+            alert(textToSearch+" company doesnt exist")
+        }
     }
-
     return (
         <ScrollView>
             <List>
@@ -26,14 +26,20 @@ export default (props) => {
                     />
                     <Icon active name="ios-search" />
                 </Item>
+                {/* <Text>{message}</Text> */}
                 {companyListValuesFiltered.map((row, index) => {
-                    return <ListItem thumbnail key={index}>
+                    return <ListItem
+                        thumbnail
+                        key={index}
+
+                    >
                         <Left>
                             <Icon active name='md-home' />
                         </Left>
                         <Body>
                             <Text>{row.companyName}</Text>
                             <Text note numberOfLines={1}>Company ID : {row.companyId}</Text>
+
                         </Body>
                         <Right>
                             <Button
@@ -90,7 +96,6 @@ const styles = StyleSheet.create({
     },
     modalTextHeader: {
         fontSize: 40,
-        alignItems:"stretch"
+        alignItems: "stretch"
     }
 });
-

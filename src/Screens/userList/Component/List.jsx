@@ -2,13 +2,17 @@
 import React, { useState } from 'react';
 import { ScrollView, Modal, StyleSheet, View } from 'react-native';
 import { List, ListItem, Icon, Text, Left, Body, Right, Button, Item, Input } from 'native-base';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import userDetails from "./userDetails";
 
 
-export default (props) => {
+export default (props, { navigation }) => {
     const usersListValues = props.user.employeeList;
     let [userListValuesFiltered, setUserListValuesFiltered] = useState(props.user.employeeList);
     const [show, setShow] = useState(false);
     const [selected, setSelected] = useState([null]);
+    const Stack = createStackNavigator();
 
     function searchUser(textToSearch) {
         setUserListValuesFiltered = props.user.employeeList.filter(i =>
@@ -18,6 +22,14 @@ export default (props) => {
 
     return (
         <ScrollView>
+            <Button
+                onPress={() => navigation.navigate('userDetails')}
+            ><Text>CLick</Text></Button>
+
+            <Stack.Navigator>
+                <Stack.Screen name="userDetails" component={userDetails} />
+            </Stack.Navigator>
+
             <List>
                 <Item>
                     <Input
@@ -32,7 +44,7 @@ export default (props) => {
                             <Icon active name='md-home' />
                         </Left>
                         <Body>
-                            <Text>{row.employeeFirstName+" "+row.employeeMiddleName+" "+row.employeeLastName}</Text>
+                            <Text>{row.employeeFirstName + " " + row.employeeMiddleName + " " + row.employeeLastName}</Text>
                             <Text note numberOfLines={1}>Employee ID : {row.employeeId}</Text>
                         </Body>
                         <Right>
@@ -45,9 +57,9 @@ export default (props) => {
                                 <Modal transparent={true} visible={show}>
                                     <View style={styles.modalContainer}>
                                         <View style={styles.modalContainerInner}>
-                                            <Text style={styles.modalTextHeader}>{selected.employeeFirstName+" "+selected.employeeMiddleName+" "+selected.employeeLastName}</Text>
+                                            <Text style={styles.modalTextHeader}>{selected.employeeFirstName + " " + selected.employeeMiddleName + " " + selected.employeeLastName}</Text>
                                             <Text style={styles.modalText}>Company Name : </Text>
-                                            <Text style={styles.modalText}>Employee Name : {selected.employeeFirstName+" "+selected.employeeMiddleName+" "+selected.employeeLastName}</Text>
+                                            <Text style={styles.modalText}>Employee Name : {selected.employeeFirstName + " " + selected.employeeMiddleName + " " + selected.employeeLastName}</Text>
                                             <Text style={styles.modalText}>Mobile Number : {selected.employeeMobileNumber}</Text>
                                             <Text style={styles.modalText}>Email ID : {selected.employeeEmailId}</Text>
                                             <Text style={styles.modalText}>Salary : </Text>
@@ -62,6 +74,7 @@ export default (props) => {
                     </ListItem>
                 })}
             </List>
+
         </ScrollView>
     )
 }
@@ -83,6 +96,6 @@ const styles = StyleSheet.create({
     },
     modalTextHeader: {
         fontSize: 40,
-        alignItems:"stretch"
+        alignItems: "stretch"
     }
 });
