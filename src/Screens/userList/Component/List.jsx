@@ -2,9 +2,8 @@
 import React, { useState } from 'react';
 import { ScrollView, Modal, StyleSheet, View } from 'react-native';
 import { List, ListItem, Icon, Text, Left, Body, Right, Button, Item, Input } from 'native-base';
-import { createStackNavigator } from '@react-navigation/stack';
 
-import userDetails from "./userDetails";
+
 
 
 export default (props, { navigation }) => {
@@ -12,24 +11,15 @@ export default (props, { navigation }) => {
     let [userListValuesFiltered, setUserListValuesFiltered] = useState(props.user.employeeList);
     const [show, setShow] = useState(false);
     const [selected, setSelected] = useState([null]);
-    const Stack = createStackNavigator();
 
     function searchUser(textToSearch) {
-        setUserListValuesFiltered(props.user.employeeList.filter(i =>
+        setUserListValuesFiltered(usersListValues.filter(i =>
             i.employeeFirstName.includes(textToSearch)))
         alert(setUserListValuesFiltered)
     }
 
     return (
         <ScrollView>
-            <Button
-                onPress={() => navigation.navigate('userDetails')}
-            ><Text>CLick</Text></Button>
-
-            <Stack.Navigator>
-                <Stack.Screen name="userDetails" component={userDetails} />
-            </Stack.Navigator>
-
             <List>
                 <Item>
                     <Input

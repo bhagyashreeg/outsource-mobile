@@ -7,7 +7,7 @@ export default (props) => {
     return (
         <Center>
             <Text>
-               Company Details
+               Company Details based on current row item clicked
             </Text>
         </Center>
     )

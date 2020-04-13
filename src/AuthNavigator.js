@@ -6,6 +6,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Login from './Screens/Login/Login';
+import companyDetails from '../src/Screens/companyList/Component/companyDetails';
+import CompanyList from './Screens/companyList/CompanyList';
 
 const Stack = createStackNavigator();
 
@@ -33,6 +35,8 @@ export const AuthNavigator = () => {
                 headerTitle: () => null
             }}>
             <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="companyDetails" component={companyDetails} />
+            <Stack.Screen name="CompanyList" component={CompanyList} />
         </Stack.Navigator>
     )
 }

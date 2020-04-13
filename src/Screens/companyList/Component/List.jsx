@@ -3,17 +3,18 @@ import React, { useState } from 'react';
 import { ScrollView, Modal, StyleSheet, View } from 'react-native';
 import { List, ListItem, Icon, Text, Left, Body, Right, Button, Item, Input } from 'native-base';
 
-export default (props) => {
+export default (props, { navigation }) => {
     const companyListValues = props.company.companyList;
     let [companyListValuesFiltered, setCompanyListValuesFiltered] = useState(props.company.companyList);
     const [show, setShow] = useState(false);
     const [selected, setSelected] = useState([null]);
 
+
     function searchUser(textToSearch) {
         setCompanyListValuesFiltered(companyListValues.filter(i =>
             i.companyName.toLowerCase().includes(textToSearch.toLowerCase())))
         if (companyListValuesFiltered.length <= 0) {
-            alert(textToSearch+" company doesnt exist")
+            alert(textToSearch + " company doesnt exist")
         }
     }
     return (
@@ -44,7 +45,8 @@ export default (props) => {
                         <Right>
                             <Button
                                 transparent
-                                onPress={() => { setShow(true); setSelected(row); }}
+                                // onPress={() => { setShow(true); setSelected(row); }}
+                                onPress={() => navigation.navigate('companyDetails')}
                             >
                                 <Text>View</Text>
 
