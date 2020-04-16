@@ -13,8 +13,8 @@ import { Icon, Text, Left } from 'native-base';
 
 import Home from './Screens/Home/Home';
 import Settings from './Screens/Settings/Settings';
-import companyList from './Screens/companyList/CompanyList';
-import userList from './Screens/userList/userList';
+import companyList from './Screens/CompanyList/CompanyList';
+import userList from './Screens/UserList/UserList';
 import bankAnnexure from './Screens/Accounts/bankAnnexure';
 
 import { AuthContext } from "./Context/AuthProvider";

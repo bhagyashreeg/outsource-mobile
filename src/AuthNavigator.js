@@ -6,8 +6,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Login from './Screens/Login/Login';
-import companyDetails from '../src/Screens/companyList/Component/companyDetails';
-import CompanyList from './Screens/companyList/CompanyList';
+import companyDetails from '../src/Screens/CompanyList/Component/CompanyDetails';
+import CompanyList from './Screens/CompanyList/CompanyList';
 
 const Stack = createStackNavigator();
 
