@@ -4,16 +4,14 @@ import { ScrollView } from 'react-native';
 import { List, ListItem, Icon, Text, Left, Body, Right, Button, Item, Input } from 'native-base';
 
 export default (props) => {
-    console.log("props,", props);
-
-    let { company: { companyList } } = props;
+    let { company: { companyList }, navigation } = props;
 
     let [companyListValuesFiltered, setCompanyListValuesFiltered] = useState(companyList);
 
     function searchUser(textToSearch) {
         setCompanyListValuesFiltered(companyList.filter(i => i.companyName.toLowerCase().includes(textToSearch.toLowerCase())))
         if (companyListValuesFiltered.length <= 0) {
-            alert(textToSearch + " company doesnt exist")
+            alert(textToSearch + " company doesn't exist")
         }
     }
 
@@ -42,7 +40,9 @@ export default (props) => {
                         <Right>
                             <Button
                                 transparent
-                                onPress={() => navigation.navigate('companyDetails')}
+                                onPress={() => navigation.navigate('CompanyDetails', {
+                                    companyId: row.companyId
+                                })}
                             >
                                 <Text>View</Text>
                             </Button>

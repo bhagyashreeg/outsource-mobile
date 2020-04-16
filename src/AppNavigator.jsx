@@ -6,12 +6,13 @@ import {
     DrawerItemList,
     DrawerItem,
 } from '@react-navigation/drawer';
+
 import { Image, StyleSheet } from 'react-native';
 import { Icon, Text, Left } from 'native-base';
 
 import Home from './Screens/Home/Home';
 import Settings from './Screens/Settings/Settings';
-import CompanyList from './Screens/CompanyList/CompanyList';
+import CompanyStack from './AppRoute/CompanyStack';
 import UserList from './Screens/UserList/UserList';
 import BankAnnexure from './Screens/Accounts/BankAnnexure';
 
@@ -62,7 +63,6 @@ function CustomDrawerContent(props) {
 }
 
 export const AppNavigator = ({ }) => {
-
     return (
         <Drawer.Navigator
             initialRouteName="Home"
@@ -83,7 +83,7 @@ export const AppNavigator = ({ }) => {
                     size={23}
                     name={Platform.OS === 'android' ? 'md-home' : 'ios-home'}></Icon>
             }} />
-            <Drawer.Screen name="Company List" component={CompanyList} options={{
+            <Drawer.Screen name="Company List" component={CompanyStack} options={{
                 drawerIcon: () => <Icon name={'md-list'}></Icon>
             }} />
             <Drawer.Screen name="User List" component={UserList} options={{
@@ -99,6 +99,7 @@ export const AppNavigator = ({ }) => {
         </Drawer.Navigator>
     );
 };
+
 const styles = StyleSheet.create({
     logoutText: {
         fontSize: 14,

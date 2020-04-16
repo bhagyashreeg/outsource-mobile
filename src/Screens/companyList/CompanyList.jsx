@@ -7,7 +7,7 @@ import Company from './Component/List';
 
 const baseURL = 'https://nmsserver.herokuapp.com/proxy/api/user/company/redeem';
 
-export default () => {
+export default (props) => {
 
     const [loading, setLoading] = useState(true);
     const [companyData, setCompanyData] = useState(null);
@@ -42,13 +42,8 @@ export default () => {
     } else {
         return (
             <Container>
-                <Header searchBar rounded>
-                    <Title>
-                        Company List
-                    </Title>
-                </Header>
                 <Content>
-                    <Company company={companyData} />
+                    <Company company={companyData} {...props} />
                 </Content>
             </Container>
         )
