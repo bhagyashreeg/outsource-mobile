@@ -4,7 +4,6 @@ import { Container, Icon, Header, Button, Item, Input, Text, Title, Content } fr
 import { Center } from '../../Components/Center';
 import Company from './Component/List';
 
-
 const baseURL = 'https://nmsserver.herokuapp.com/proxy/api/user/company/redeem';
 
 export default () => {
@@ -48,6 +47,10 @@ export default () => {
                     </Title>
                 </Header>
                 <Content>
+                    <Item>
+                        <Input placeholder="Search" />
+                        <Icon active name="ios-search" />
+                    </Item>
                     <Company company={companyData} />
                 </Content>
             </Container>
