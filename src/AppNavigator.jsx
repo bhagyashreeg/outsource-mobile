@@ -6,16 +6,15 @@ import {
     DrawerItemList,
     DrawerItem,
 } from '@react-navigation/drawer';
+
 import { Image, StyleSheet } from 'react-native';
 import { Icon, Text, Left } from 'native-base';
 
-
-
 import Home from './Screens/Home/Home';
 import Settings from './Screens/Settings/Settings';
-import companyList from './Screens/companyList/CompanyList';
-import userList from './Screens/userList/userList';
-import bankAnnexure from './Screens/Accounts/bankAnnexure';
+import CompanyStack from './AppRoute/CompanyStack';
+import UserList from './Screens/UserList/UserList';
+import BankAnnexure from './Screens/Accounts/BankAnnexure';
 
 import { AuthContext } from "./Context/AuthProvider";
 
@@ -42,11 +41,11 @@ function CustomDrawerContent(props) {
                     return (
                         <Text>
                             <Text>
-                                
+
                             </Text>
                             <Text>
-                            <Icon name={'md-power'}></Icon>
-                                <Text style = {styles.logoutText}>Logout</Text>
+                                <Icon name={'md-power'}></Icon>
+                                <Text style={styles.logoutText}>Logout</Text>
                             </Text>
                         </Text>
                     )
@@ -64,7 +63,6 @@ function CustomDrawerContent(props) {
 }
 
 export const AppNavigator = ({ }) => {
-
     return (
         <Drawer.Navigator
             initialRouteName="Home"
@@ -81,26 +79,27 @@ export const AppNavigator = ({ }) => {
             drawerContent={props => <CustomDrawerContent {...props} />}
         >
             <Drawer.Screen name="Home" component={Home} options={{
-                drawerIcon: config => <Icon
+                drawerIcon: () => <Icon
                     size={23}
                     name={Platform.OS === 'android' ? 'md-home' : 'ios-home'}></Icon>
             }} />
-            <Drawer.Screen name="Company List" component={companyList} options={{
-                drawerIcon: config => <Icon name={'md-list'}></Icon>
+            <Drawer.Screen name="Company List" component={CompanyStack} options={{
+                drawerIcon: () => <Icon name={'md-list'}></Icon>
             }} />
-            <Drawer.Screen name="User List" component={userList} options={{
-                drawerIcon: config => <Icon name={'md-list'} ></Icon>
+            <Drawer.Screen name="User List" component={UserList} options={{
+                drawerIcon: () => <Icon name={'md-list'} ></Icon>
             }} />
-            <Drawer.Screen name="Accounts" component={bankAnnexure} options={{
-                drawerIcon: config => <Icon name={'md-calculator'}></Icon>
+            <Drawer.Screen name="Accounts" component={BankAnnexure} options={{
+                drawerIcon: () => <Icon name={'md-calculator'}></Icon>
             }} />
             <Drawer.Screen name="Settings" component={Settings
-} options={{
-                drawerIcon: config => <Icon name={'md-settings'}></Icon>
+            } options={{
+                drawerIcon: () => <Icon name={'md-settings'}></Icon>
             }} />
         </Drawer.Navigator>
     );
 };
+
 const styles = StyleSheet.create({
     logoutText: {
         fontSize: 14,
