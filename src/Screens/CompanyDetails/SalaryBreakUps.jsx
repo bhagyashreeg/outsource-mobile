@@ -1,7 +1,8 @@
 import React from 'react';
-import { List, ListItem, Icon, Text, Left, Body, Right, Button, Item, Input } from 'native-base';
+import { List, Icon, Item, Input } from 'native-base';
 import { ScrollView } from 'react-native';
 import { Center } from '../../Components/Center';
+import {CardDetails} from './CardViewDetails';
 
 export default (...props) => {
     console.log("Salary Break Ups", props);
@@ -15,26 +16,7 @@ export default (...props) => {
                     />
                     <Icon active name="ios-search" />
                 </Item>
-                <ListItem thumbnail >
-
-                    <Left>
-                        <Icon active name='md-home' />
-                    </Left>
-                    <Body>
-                        <Text>EmpName</Text>
-                        <Text note numberOfLines={1}>Company ID :</Text>
-                        <Text note numberOfLines={1}>Company ID :</Text>
-                        <Text note numberOfLines={1}>Company ID :</Text>
-                        <Text note numberOfLines={1}>Company ID :</Text>
-                    </Body>
-                    <Right>
-                        <Button
-                            transparent
-                        >
-                            <Text>View</Text>
-                        </Button>
-                    </Right>
-                </ListItem>
+                <CardDetails/>
             </List>
         </ScrollView>
     )

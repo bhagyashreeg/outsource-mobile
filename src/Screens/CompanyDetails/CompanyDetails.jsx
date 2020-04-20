@@ -1,6 +1,5 @@
 
 import * as React from 'react';
-import { Text, View } from 'react-native';
 import { Icon } from 'native-base';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 

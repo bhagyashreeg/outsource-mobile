@@ -1,14 +1,13 @@
 import React from 'react';
-import { Text, Button, View } from 'native-base';
 import { Center } from '../../Components/Center';
+import {CardDetails} from './CardViewDetails';
 
 export default (props) => {
     console.log("Employee List props", props);
     return (
         <Center>
-            <Text>
-                Employee Lists
-            </Text>
+            <CardDetails />
         </Center>
+        
     )
 }
