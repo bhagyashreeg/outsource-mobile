@@ -7,6 +7,8 @@ import {
     DrawerItem,
 } from '@react-navigation/drawer';
 
+import {TabNavigator} from '@react-navigation/drawer'
+
 import { Image, StyleSheet } from 'react-native';
 import { Icon, Text, Left } from 'native-base';
 

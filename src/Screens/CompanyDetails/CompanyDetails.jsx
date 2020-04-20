@@ -1,168 +1,63 @@
-import React from 'react';
-import { Text, View,Card,CardItem,Container,Content,Body,Grid} from 'native-base';
-import {ScrollView,StyleSheet,FlatList} from 'react-native';
-import { Center} from '../../Components/Center';
+
+import * as React from 'react';
+import { Icon } from 'native-base';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import SalaryBreakUps from './SalaryBreakUps';
+import EmployeeList from './EmployeeList';
+import Attendance from './Attendance';
+import CostSheet from './CostSheet';
+
+const Tab = createBottomTabNavigator();
+
+function MyTabs(props) {
+    console.log(JSON.stringify(props) + "data")
+    return (
+        <Tab.Navigator {...props}>
+            <Tab.Screen 
+                name="Salary Break Ups"
+                component={SalaryBreakUps}
+                options={{
+                    tabBarIcon: ({ tintColor }) => (
+                        <Icon name="flash" color={tintColor} size={25} />
+                    )
+                }} />
+            <Tab.Screen
+                name="Employee List"
+                component={EmployeeList}
+                screenProps={props}
+                options={{
+                    tabBarIcon: ({ tintColor }) => (
+                        <Icon name="list-box" color={tintColor} size={25} />
+                    )
+                }} />
+            <Tab.Screen 
+                name="Attendance"
+                component={Attendance}
+                options={{
+                    tabBarIcon: ({ tintColor }) => (
+                        <Icon name="stats" color={tintColor} size={25} />
+                    )
+                }} />
+            <Tab.Screen
+                name="Cost Sheet"
+                component={CostSheet}
+                options={{
+                    tabBarIcon: ({ tintColor }) => (
+                        <Icon name="logo-twitch" color={tintColor} size={25} />
+                    )
+                }} />
+        </Tab.Navigator >
+    );
+}
 
 // const numColumns=2
 export default (props) => {
-    console.log("company details props", props);
+    console.log("company details props.", props);
+    alert(props.route.params.companyId + "  is the company ID selected")
+    const companyId = props.route.params.companyId
     return (
-        
-        <ScrollView >
-            {/* <Grid style={styles.grid}> */}
-            {/* <View style={{ flexDirection: 'row', justifyContent:'flex-end' }}> */}
-            <View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
-                {/* <FlatList
-                numColumns={numColumns}
-                />  */}
-        {/* <Center>
-            <Text>
-                Company Details based on current row item clicked
-            </Text>
-        </Center> */}
-
-<Container style={styles.container}>
-<Content style={styles.content} >
-
-  <Card style={styles.card}>
-    <CardItem>
-
-      <Body>
-        <Text>Cost sheet</Text>
-        <Text>cost</Text>
-      </Body>
-
-    </CardItem>
-  </Card>
-  <Card style={styles.card}>
-    <CardItem>
-
-      <Body>
-        <Text>Cost sheet</Text>
-        <Text>cost</Text>
-      </Body>
-
-    </CardItem>
-  </Card>
-  <Card>
-    <CardItem>
-
-      <Body>
-        <Text>Cost sheet</Text>
-        <Text>cost</Text>
-      </Body>
-
-    </CardItem>
-  </Card>
-  <Card>
-    <CardItem>
-
-      <Body>
-        <Text>Cost sheet</Text>
-        <Text>cost</Text>
-      </Body>
-
-    </CardItem>
-  </Card>
-  <Card>
-    <CardItem>
-
-      <Body>
-        <Text>Cost sheet</Text>
-        <Text>cost</Text>
-      </Body>
-
-    </CardItem>
-  </Card>
-  <Card>
-    <CardItem>
-
-      <Body>
-        <Text>Cost sheet</Text>
-        <Text>cost</Text>
-      </Body>
-
-    </CardItem>
-  </Card>
-  <Card>
-    <CardItem>
-
-      <Body>
-        <Text>Cost sheet</Text>
-        <Text>cost</Text>
-      </Body>
-
-    </CardItem>
-  </Card>
-  <Card>
-    <CardItem>
-
-      <Body>
-        <Text>Cost sheet</Text>
-        <Text>cost</Text>
-      </Body>
-
-    </CardItem>
-  </Card>
-  <Card >
-    <CardItem>
-
-      <Body>
-        <Text>Cost sheet</Text>
-        <Text>cost</Text>
-      </Body>
-
-    </CardItem>
-  </Card>
-  <Card >
-    <CardItem>
-
-      <Body>
-        <Text>Cost sheet</Text>
-        <Text>cost</Text>
-      </Body>
-
-    </CardItem>
-  </Card>
-  <Card>
-    <CardItem>
-
-      <Body>
-        <Text>Cost sheet</Text>
-        <Text>cost</Text>
-      </Body>
-
-    </CardItem>
-  </Card>
-  
-  
-  </Content>
-          </Container>
-          </View>
-          
-          </ScrollView>
-          
-    )
+        <MyTabs companyId={companyId} />
+    );
 }
 
-
-const styles = StyleSheet.create({
-   container:{
-       flex:1,
-    //    flexDirection:'row',
-    //     flexWrap: 'wrap',
-    justifyContent:'flex-end',
-       width:350,
-   },
-   card:{
-    // flex:1,
-    // flexDirection:'row',
-    //  flexWrap: 'wrap',
-    // justifyContent:'flex-start',
-    // position:'relative',
-     width:100,
-    //  height:100,
-       
-   },
-   
-});
