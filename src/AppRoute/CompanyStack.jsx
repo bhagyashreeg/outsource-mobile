@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import CompanyList from '../Screens/companyList/CompanyList';
 import CompanyDetails from '../Screens/CompanyDetails/CompanyDetails';
 
-import CompanyDetailaTabNavigation from '../Screens/CompanyTabNavigation/CompanyDetailaTabNavigation';
+// import CompanyDetailaTabNavigation from '../Screens/CompanyTabNavigation/CompanyDetailaTabNavigation';
 
 const Stack = createStackNavigator();
 
