@@ -43,11 +43,11 @@ export default () => {
     } else {
         return (
             <ScrollView>
-                 <Center>
+                 {/* <Center>
                     <Text>
                         Home
                     </Text>
-                </Center> 
+                </Center>  */}
                 <Company company={companyData} />
                 
             </ScrollView>
