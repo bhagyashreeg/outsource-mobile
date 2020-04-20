@@ -16,32 +16,21 @@ export default (props) => {
                     source={require('../../../Static/images/company-list-bg.png')}
                 >
 
-                <Text style={styles.bgtext}>Companies</Text>
-                <View style={styles.bckground}>
-                    <Image
-                        source={require('../../../Static/images/nms-logo.png')}
-                        style={styles.logo}
-                    />
-                        {/* <View>
-                        <Text>The country code is!            {countryList[0].countryCode}</Text>
-                        <Text>The country ID is!              {countryList[0].countryId}</Text>
-                        <Text>The country name is!            {countryList[0].countryName}</Text>
-                        <Text>The company status ID is!       {companyStatusList[0].companyStatusId}</Text>
-                        <Text>The company status name is 1!   {companyStatusList[0].companyStatusName}</Text>
-                        <Text>The company status name is 2!   {companyStatusList[1].companyStatusName}</Text>
-                        <Text>The company status name is 3!   {companyStatusList[2].companyStatusName}</Text>
-                        <Text>The company status name is 4!   {companyStatusList[3].companyStatusName}</Text>
-                    </View> */}
-                </View>
+                    <Text style={styles.bgtext}>Companies</Text>
+                    <View style={styles.bckground}>
+                        <Image
+                            source={require('../../../Static/images/nms-logo.png')}
+                            style={styles.logo}
+                        />
 
-                    {/* <Container> */}
+                    </View>
+
                     <Content style={styles.content}>
 
                         <Card style={styles.card} >
                             <Image
                                 style={{
                                     flex: 1,
-                                    // resizeMode,
                                 }}
                                 source={require('../../../../assets/totalEmployees.jpg')}
                             />
@@ -57,7 +46,6 @@ export default (props) => {
                             <Image
                                 style={{
                                     flex: 1,
-                                    // resizeMode,
                                 }}
                                 source={require('../../../../assets/companiesRegistered.jpg')}
                             />
@@ -73,7 +61,6 @@ export default (props) => {
                             <Image
                                 style={{
                                     flex: 1,
-                                    // resizeMode,
                                 }}
                                 source={require('../../../../assets/totalRevenue.jpg')}
                             />
@@ -89,7 +76,6 @@ export default (props) => {
                             <Image
                                 style={{
                                     flex: 1,
-                                    // resizeMode,
                                 }}
                                 source={require('../../../../assets/totalRevenue.jpg')}
                             />
@@ -105,7 +91,6 @@ export default (props) => {
                             <Image
                                 style={{
                                     flex: 1,
-                                    // resizeMode,
                                 }}
                                 source={require('../../../../assets/totalRevenue.jpg')}
                             />
@@ -121,7 +106,6 @@ export default (props) => {
                             <Image
                                 style={{
                                     flex: 1,
-                                    // resizeMode,
                                 }}
                                 source={require('../../../../assets/totalRevenue.jpg')}
                             />
@@ -134,7 +118,7 @@ export default (props) => {
                         </Card>
 
                     </Content>
-                    {/* </Container> */}
+
                 </ImageBackground>
             </View>
         </ScrollView>
