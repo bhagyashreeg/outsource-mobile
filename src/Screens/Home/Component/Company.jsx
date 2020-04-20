@@ -136,7 +136,7 @@ export default (props) => {
                 </Content>
             </Container>
         </View>
-        </ScrollView>
+         </ScrollView> 
         
     );
 }
