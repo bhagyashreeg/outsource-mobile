@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import BankAnnexure from "./BankAnnexure";
 import CompanyWisePayment from "./CompanyWisePayment";
 import EmployeePayments from "./EmployeePayments";
-import TaxAndGst from "./TaxAndGst";
+import TaxAndGst from "./taxAndGst";
 
 const Tab = createBottomTabNavigator();
 

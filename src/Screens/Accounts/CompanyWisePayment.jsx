@@ -4,8 +4,10 @@ import { Center } from "../../Components/Center";
 
 export default () => {
   return (
+  
     <Center>
-      <Text>Company Wise payments</Text>
-    </Center>
+    <Text >Company Wise payments</Text>
+  </Center>
+    
   );
 };
