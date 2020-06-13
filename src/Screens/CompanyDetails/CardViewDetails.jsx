@@ -6,7 +6,7 @@ import { StyleSheet } from 'react-native'
 export const CardDetails = (props) => {
     return (
         <Container style = {styles.container}>
-           <Card style = {styles.redbox}>
+           <Card style = {styles.cardemployees}>
             <CardItem header bordered>
               <Text>100</Text>
             </CardItem>
@@ -19,7 +19,7 @@ export const CardDetails = (props) => {
             </CardItem>    
           </Card>
 
-          <Card style = {styles.bluebox}>
+          <Card style = {styles.cardrevenue}>
             <CardItem header bordered>
               <Text>50000</Text>
             </CardItem>
@@ -32,7 +32,7 @@ export const CardDetails = (props) => {
             </CardItem>    
           </Card> 
 
-          <Card style = {styles.blackbox}>
+          <Card style = {styles.cardother}>
             <CardItem header bordered>
               <Text>Misc...</Text>
             </CardItem>
@@ -56,15 +56,15 @@ const styles = StyleSheet.create ({
        backgroundColor: 'grey',
        height: 600
     },
-    redbox: {
+    cardemployees: {
        width: 115,
        height: 100,
     },
-    bluebox: {
+    cardrevenue: {
        width: 115,
        height: 100,
     },
-    blackbox: {
+    cardother: {
        width: 115,
        height: 100,
     },
