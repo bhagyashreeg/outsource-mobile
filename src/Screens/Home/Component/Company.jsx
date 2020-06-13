@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { StyleSheet, View, Text, ImageBackground, Image, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ImageBackground, Image, ScrollView,StatusBar } from 'react-native';
 import { Card, CardItem, Body, Content, Container } from 'native-base';
 import { CardStyleInterpolators } from '@react-navigation/stack';
 
@@ -11,12 +11,15 @@ export default (props) => {
     return (
         <ScrollView>
             <View style={styles.container}>
+            <View>
+                <StatusBar hidden={true} />
+            </View>
                 <ImageBackground
                     style={styles.bgimg}
                     source={require('../../../Static/images/company-list-bg.png')}
                 >
 
-                    <Text style={styles.bgtext}>Companies</Text>
+                    <Text style={styles.bgtext}>DashBoard/Home</Text>
                     <View style={styles.bckground}>
                         <Image
                             source={require('../../../Static/images/nms-logo.png')}
@@ -136,8 +139,8 @@ const styles = StyleSheet.create({
         width: 30,
         height: 30,
 
-        marginLeft: -300,
-        marginTop: -20
+        marginLeft: -200,
+        marginTop: -30
     },
     content: {
         margin: 5

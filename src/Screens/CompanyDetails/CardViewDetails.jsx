@@ -53,7 +53,7 @@ const styles = StyleSheet.create ({
        flexDirection: 'row',
        justifyContent: 'space-evenly',
        alignItems: 'flex-start',
-       backgroundColor: 'grey',
+       backgroundColor: '#ededed',
        height: 600
     },
     cardemployees: {
