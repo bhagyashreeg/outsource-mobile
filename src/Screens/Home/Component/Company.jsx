@@ -5,9 +5,7 @@ import { Card, CardItem, Body, Content, Container } from 'native-base';
 import { CardStyleInterpolators } from '@react-navigation/stack';
 
 export default (props) => {
-
     let { countryList, companyStatusList } = props.company;
-
     return (
         <ScrollView>
             <View style={styles.container}>
@@ -119,13 +117,10 @@ export default (props) => {
                                 </Body>
                             </CardItem>
                         </Card>
-
                     </Content>
-
                 </ImageBackground>
             </View>
         </ScrollView>
-
     );
 }
 
@@ -133,14 +128,12 @@ export default (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-
     },
     logo: {
         width: 30,
         height: 30,
-
-        marginLeft: -200,
-        marginTop: -30
+        marginLeft: -300,
+        marginTop: -20
     },
     content: {
         margin: 5
@@ -151,19 +144,15 @@ const styles = StyleSheet.create({
     bgimg: {
         paddingTop: 48,
         padding: 3,
-
     },
     bgtext: {
         textAlign: 'center',
-
         fontSize: 20,
         marginTop: -25,
         fontWeight: 'bold',
-
     },
     bckground: {
         alignItems: 'center',
         height: 20,
     }
-
 });

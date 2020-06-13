@@ -51,7 +51,7 @@ function MyTabs(props) {
     );
 }
 
-// const numColumns=2
+
 export default (props) => {
     console.log("company details props.", props);
     alert(props.route.params.companyId + "  is the company ID selected")
@@ -60,4 +60,3 @@ export default (props) => {
         <MyTabs companyId={companyId} />
     );
 }
-

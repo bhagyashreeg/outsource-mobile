@@ -15,7 +15,7 @@ export default (props, { navigation }) => {
     function searchUser(textToSearch) {
         setUserListValuesFiltered(usersListValues.filter(i =>
             i.employeeFirstName.includes(textToSearch)))
-        alert(setUserListValuesFiltered)
+        // alert(setUserListValuesFiltered)
     }
 
     return (
